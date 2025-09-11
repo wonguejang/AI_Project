@@ -33,6 +33,6 @@ public class Cart {
 	@ManyToOne
 	@JoinColumn(name="memberIdx")
 	private Member member;
-	
+	//team branch test
 	private Integer quantity;
 }
