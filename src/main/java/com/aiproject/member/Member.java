@@ -15,6 +15,7 @@ public class Member {
 	private String password;
 	
 	private String userName;
-	
+	//emailApi 사용예정
 	private String userEmail;
+	
 }
