@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 상세 페이지 | UU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* body, container, main-header, main-nav, utility-nav, main-visual, product-list, product-item, main-footer styles are kept from your provided HTML */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Header styles from your provided code */
+    .main-header {
+        background-color: #fff;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .main-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+    
+    .utility-nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        margin-left: 20px; 
+    }
+
+    /* Product detail page specific styles */
+    .detail-page-container {
+        padding: 40px 0;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .product-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .product-image-section {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .main-product-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .product-info-section {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #eee;
+    }
+
+    .product-title {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .product-price {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .option-item {
+        margin-bottom: 15px;
+    }
+
+    .option-item label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .option-item select, .option-item input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .total-price-box {
+        text-align: right;
+        margin: 30px 0;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    .total-price-box .total-price {
+        font-size: 1.8em;
+        color: #e50914;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .button-group button {
+        flex: 1;
+        padding: 15px;
+        font-size: 1.1em;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+    }
+
+    .add-to-cart-btn { background-color: #888; }
+    .buy-now-btn { background-color: #000; }
+    .wishlist-btn { 
+        background-color: transparent;
+        border: 1px solid #ccc;
+        color: #333;
+    }
+
+    .product-detail-description {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .product-detail-description img {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    /* Footer styles from your provided code */
+    .main-footer {
+        background-color: #f8f8f8;
+        color: #666;
+        padding: 20px 0;
+        text-align: center;
+        font-size: 0.9em;
+    }
+	
+	.kakaopay-btn{
+		background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcEaPmw%2FbtrcIUODymI%2FAAAAAAAAAAAAAAAAAAAAAJ66dlufqQ8CmrywsO5eQdaR-ALF_-6jbvFe4nRJZzfn%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DHLT9Tz0V%252BCYDjQWWggf5mrQV6S4%253D");
+		background-position: center;
+		background-size: cover;
+	}
+	
+	.review-section {
+	    padding: 50px 0;
+	    background-color: #f9f9f9;
+	}
+
+	.review-section h2 {
+	    text-align: center;
+	    font-size: 2.5em;
+	    margin-bottom: 40px;
+	}
+
+	/* 리뷰 작성 폼 */
+	.review-form {
+	    background-color: #fff;
+	    padding: 30px;
+	    border: 1px solid #ddd;
+	    margin-bottom: 40px;
+	}
+
+	.review-form h3 {
+	    margin-top: 0;
+	    font-size: 1.5em;
+	    border-bottom: 1px solid #eee;
+	    padding-bottom: 10px;
+	}
+
+	.form-group {
+	    margin-bottom: 20px;
+	}
+
+	.form-group label {
+	    display: block;
+	    font-weight: bold;
+	    margin-bottom: 8px;
+	}
+
+	.form-group input,
+	.form-group textarea {
+	    width: 100%;
+	    padding: 10px;
+	    border: 1px solid #ccc;
+	    font-size: 1em;
+	}
+
+	.submit-review-btn {
+	    width: 100%;
+	    padding: 15px;
+	    background-color: #000;
+	    color: #fff;
+	    border: none;
+	    cursor: pointer;
+	    font-size: 1.1em;
+	}
+
+	/* 리뷰 목록 */
+	.review-list h3 {
+	    font-size: 1.5em;
+	    border-bottom: 1px solid #eee;
+	    padding-bottom: 10px;
+	    margin-bottom: 20px;
+	}
+
+	.review-item {
+	    background-color: #fff;
+	    padding: 20px;
+	    border: 1px solid #ddd;
+	    margin-bottom: 15px;
+	}
+
+	.review-meta {
+	    font-size: 0.9em;
+	    color: #888;
+	    margin-bottom: 10px;
+	}
+
+	.review-writer {
+	    font-weight: bold;
+	    color: #333;
+	}
+
+	.no-reviews {
+	    text-align: center;
+	    color: #888;
+	    padding: 30px;
+	}
+	textarea {
+		resize: none;		
+	}
+	.form-group input, .form-group textarea{
+		height:100px;
+		width: 98%;
+		padding: 10px;
+		border: 1px solid #ccc;
+		font-size: 17px;
+	}
+</style>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-f910-61fa-8fdd-76216fba6f79/raw?se=2025-09-11T16%3A23%3A12Z&sp=r&sv=2024-08-04&sr=b&scid=e4b3bcea-3bba-50fd-9e06-950cae148881&skoid=cb94e22a-e3df-4e6a-9e17-1696f40fa435&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-11T11%3A30%3A18Z&ske=2025-09-12T11%3A30%3A18Z&sks=b&skv=2024-08-04&sig=%2Bx67ISIQCteMM7NhEX0qDimiIYlQFl2mGEgf9tp9tuc%3D" alt="UU 로고">
+                </a>
+            </div>
+            <div class="utility-nav">
+                <a href="#">로그인</a>
+                <a href="/cart" th:if="${logincheck}">장바구니</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="detail-page-container">
+        <div class="product-wrap">
+            <div class="product-image-section">
+                <img src="//cafe24.poxo.com/ec01/kiljh94/0jJurf5+JqL2mXn6P+LWO3hJo9SGsFzpl5uD5twVWJgyDsmNhxEY7lxTrn6FCeuJdeQ8Gq8/wzyKkMtCMSMWVQ==/_/web/product/big/202403/f836f2c67e6c67a82ccb926653ccd4e2.jpg" alt="상품 메인 이미지" class="main-product-image">
+                </div>
+
+            <div class="product-info-section">
+                <h1 class="product-title">어깨넓어보이는 두께운 반팔 티셔츠</h1>
+                <p class="product-price">26,000원</p>
+                <div class="total-price-box">
+                    <p>상품 금액</p>
+                    <p class="total-price">26,000원</p>
+                </div>
+
+				<div class="button-group">
+				    <button class="add-to-cart-btn">장바구니</button>
+				    <button class="buy-now-btn">바로구매</button>
+				    <button class="kakaopay-btn" onclick="requestKakaoPay()">
+				    </button>
+				</div>
+
+                <div class="shipping-info">
+                    <p>배송 방법: 택배</p>
+                </div>
+            </div>
+        </div>
+		
+		<section class="review-section">
+		    <div class="container">
+		        <h2>상품 리뷰</h2>
+
+		        <div class="review-form">
+		            <h3>리뷰 작성하기</h3>
+		            <form action="/review/write" method="post">
+		                <input type="hidden" name="productId" th:value="${product.id}">
+		                <div class="form-group">
+		                    <label for="review-content">내용</label>
+		                    <textarea id="review-content" name="content" required></textarea>
+		                </div>
+		                <button type="submit" class="submit-review-btn">작성하기</button>
+		            </form>
+		        </div>
+
+				<div class="review-list">
+		            <h3>최근 리뷰</h3>
+		            
+		            <div class="review-item">
+		                <div class="review-meta">
+		                    <span class="review-writer">user123</span>
+		                    <span class="review-date">2025.09.11</span>
+		                </div>
+		                <div class="review-content">
+		                    <p>옷이 너무 예뻐요! 배송도 빠르고 재질도 좋습니다. 잘 입을게요.</p>
+		                </div>
+		            </div>
+		            
+		            <div class="review-item">
+		                <div class="review-meta">
+		                    <span class="review-writer">fashion_lover</span>
+		                    <span class="review-date">2025.09.10</span>
+		                </div>
+		                <div class="review-content">
+		                    <p>생각보다 핏이 더 좋네요. 색상도 화면과 거의 같아요. 만족합니다!</p>
+		                </div>
+		            </div>
+		            <!--<div class="review-item" th:each="review : ${reviews}">
+		                <div class="review-meta">
+		                    <span class="review-writer" th:text="${review.writer}"></span>
+		                    <span class="review-date" th:text="${#dates.format(review.date, 'yyyy.MM.dd')}"></span>
+		                </div>
+		            </div>-->
+		        </div>
+		    </div>
+		</section>
+		
+        <section class="product-detail-description">
+            <img src="https://www.snazzy.co.kr/web/upload/NNEditor/20230214/copy-1676340209-1_1.jpg" alt="상품 상세 설명 이미지 1">
+            <img src="https://www.snazzy.co.kr/web/upload/NNEditor/20230214/copy-1676340209-2_1.jpg" alt="상품 상세 설명 이미지 2">
+            </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>회사명: UU | 주소: 서울시 마포구</p>
+            <p>고객센터: 1234-5678</p>
+        </div>
+    </footer>
+
+</body>
+</html>
