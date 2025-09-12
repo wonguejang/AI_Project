@@ -44,6 +44,19 @@ dependencies {
 	
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	
+	    // --- Jackson (JSON 직렬화/역직렬화) ---
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.17.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+
+    // --- Jakarta Activation ---
+    implementation 'jakarta.activation:jakarta.activation-api:2.0.1'
+    implementation 'com.sun.activation:jakarta.activation:2.0.1'
+
+    // --- Jakarta Mail ---
+    implementation 'com.sun.mail:jakarta.mail:2.0.1'
+	
 }
 
 tasks.named('test') {
