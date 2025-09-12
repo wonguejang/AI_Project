@@ -27,6 +27,8 @@ public class Member {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member")
 	@SequenceGenerator(name="member", sequenceName="seq_member_idx", allocationSize=1)
 	private Integer memberIdx;
+	
+	private String memberPw;
 
 	@Column(unique = true)
 	private String memberEmail;
