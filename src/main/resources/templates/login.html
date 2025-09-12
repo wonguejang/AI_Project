@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 | UU</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <style>
+    /* 기존 스타일은 유지 */
     body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -16,106 +16,100 @@
         line-height: 1.6;
         background-color: #f8f8f8;
     }
-
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
     }
-    
-    /* 헤더 스타일 */
     .main-header {
         background-color: #fff;
         padding: 20px 0;
         border-bottom: 1px solid #eee;
     }
-
     .main-header .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
     .logo img {
         height: 40px;
     }
-    
     .utility-nav a {
         text-decoration: none;
         color: #333;
         font-weight: bold;
         margin-left: 20px; 
     }
-
-    /* 로그인 페이지 스타일 */
     .login-container {
         padding: 60px 0;
     }
-
     .login-title {
         text-align: center;
         font-size: 2.5em;
         font-weight: normal;
         margin-bottom: 40px;
     }
-
     .login-form-wrap {
         max-width: 500px;
         margin: 0 auto;
         padding: 40px 60px;
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        border: 1px solid #ddd; /* 이미지와 유사한 보더 추가 */
+        border: 1px solid #ddd;
     }
-    
     .login-sub-title {
         text-align: center;
         font-size: 1.5em;
         font-weight: bold;
         margin-bottom: 30px;
     }
-
+    
+    /* --- 수정된 로그인 폼 스타일 --- */
     .form-group {
         display: flex;
-        align-items: center;
-        margin-bottom: 10px;
+        align-items: center; /* 세로 중앙 정렬 */
+        margin-bottom: 15px;
     }
-    
-    .form-group:last-of-type {
-        margin-bottom: 0;
-    }
-
     .form-group label {
-        display: none; /* 레이블 숨김 */
+        display: none;
     }
-
-    .form-group input {
+    .input-group {
+        width: 90%; /* 아이디/비밀번호 필드 그룹의 너비 */
+        margin-right: 10px; /* 버튼과의 간격 */
+    }
+    .input-group input {
         width: 100%;
+        box-sizing: border-box; /* 패딩과 보더가 너비에 포함되도록 */
         padding: 12px;
         border: 1px solid #ccc;
         font-size: 1em;
     }
-    
-    .input-group {
-        width: 70%;
-        margin-right: 10px;
-    }
-    
     .login-btn-wrap {
-        width: 30%;
+        width: 10%; /* 버튼 그룹의 너비 */
+        height: 100%; /* 부모의 높이를 상속 */
+        display: flex;
+        align-items: center;
     }
-
-    
+    .login-btn {
+        width: 100%; /* 부모 요소의 너비를 채우도록 설정 */
+        height: 80px; /* 높이 고정 (입력 필드 2개의 높이와 비슷하게) */
+        background-color: #333;
+        color: #fff;
+        border: none;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
     .login-btn:hover {
         background-color: #000;
     }
-
+    
+    /* 기존 스타일 이어서 */
     .security-check {
         font-size: 0.9em;
         color: #888;
         margin-top: 15px;
     }
-    
     .login-links {
         display: flex;
         justify-content: center;
@@ -124,28 +118,22 @@
         font-size: 0.9em;
         color: #888;
     }
-
     .login-links a {
         color: #666;
         text-decoration: none;
     }
-    
     .login-links a:hover {
         text-decoration: underline;
     }
-    
     .login-links span {
         color: #ddd;
     }
-
-    /* 소셜 로그인 스타일 */
     .social-login {
         text-align: center;
         margin-top: 40px;
         border-bottom: 1px solid #eee;
         padding-bottom: 30px;
     }
-    
     .social-buttons {
         display: flex;
         justify-content: center;
@@ -153,7 +141,6 @@
         gap: 15px;
         margin-top: 20px;
     }
-    
     .social-btn {
         background-color: #fff;
         border: 1px solid #ccc;
@@ -166,13 +153,10 @@
         align-items: center;
         padding: 0;
     }
-    
     .social-btn img {
         width: 45px;
         height: 45px;
     }
-
-    /* 회원가입 링크 영역 */
     .signup-wrap {
         margin-top: 40px;
         padding: 20px;
@@ -182,12 +166,10 @@
         align-items: center;
         background-color: #fcfcfc;
     }
-    
     .signup-text {
         font-size: 0.9em;
         color: #666;
     }
-
     .signup-btn {
         padding: 10px 15px;
         background-color: #666;
@@ -197,12 +179,9 @@
         display: flex;
         align-items: center;
     }
-
     .signup-btn i {
         margin-left: 5px;
     }
-
-    /* 푸터 스타일 */
     .main-footer {
         background-color: #f8f8f8;
         color: #666;
@@ -213,12 +192,11 @@
 </style>
 <body>
 
-    <!-- 헤더 영역 -->
     <header class="main-header">
         <div class="container">
             <div class="logo">
                 <a href="#">
-                    <img src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-f910-61fa-8fdd-76216fba6f79/raw?se=2025-09-11T16%3A23%3A12Z&sp=r&sv=2024-08-04&sr=b&scid=e4b3bcea-3bba-50fd-9e06-950cae148881&skoid=cb94e22a-e3df-4e6a-9e17-1696f40fa435&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-11T11%3A30%3A18Z&ske=2025-09-12T11%3A30%3A18Z&sks=b&skv=2024-08-04&sig=%2Bx67ISIQCteMM7NhEX0qDimiIYlQFl2mGEgf9tp9tuc%3D" alt="UU 로고">
+                    <img src="/images/UULogo.png" alt="UU 로고">
                 </a>
             </div>
             <div class="utility-nav">
@@ -228,7 +206,6 @@
         </div>
     </header>
 
-    <!-- 로그인 페이지 본문 -->
     <main class="login-container">
         <div class="container">
             <h1 class="login-title">로그인</h1>
@@ -240,15 +217,11 @@
                         <div class="input-group">
                             <label for="username">아이디</label>
                             <input type="text" id="username" name="username" placeholder="아이디" required>
+                            <label for="password">비밀번호</label>
+                            <input type="password" id="password" name="password" placeholder="비밀번호" required>
                         </div>
                         <div class="login-btn-wrap">
                             <button type="submit" class="login-btn">로그인</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label for="password">비밀번호</label>
-                            <input type="password" id="password" name="password" placeholder="비밀번호" required>
                         </div>
                     </div>
                 </form>
@@ -272,7 +245,7 @@
                             <img src="https://logoproject.naver.com/2012/CI_2012_BI_Green.png" alt="네이버 로고">
                         </button>
                         <button class="social-btn kakao">
-                            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fkr%2Ffree-icon%2Fkakao-talk_15127602&psig=AOvVaw216_Q-T9-f8s9Kk1L7K6W3&ust=1726058691522000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPj3x5eHw4MDFQAAAAAdAAAAABAK" alt="카카오 로고">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/KakaoTalk_logo.svg/800px-KakaoTalk_logo.svg.png" alt="카카오 로고">
                         </button>
                         <button class="social-btn google">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="구글 로고">
@@ -291,7 +264,6 @@
         </div>
     </main>
 
-    <!-- 푸터 영역 -->
     <footer class="main-footer">
         <div class="container">
             <p>회사명: UU | 주소: 서울시 마포구</p>
