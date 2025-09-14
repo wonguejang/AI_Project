@@ -38,11 +38,4 @@ public class Product {
 	@OneToMany(mappedBy="product")
 	private List<Cart> carts = new ArrayList<>();
 	
-    public Product(Integer productIdx, String productName, int price, String category, int rating) {
-        this.productIdx = productIdx;
-        this.productName = productName;
-        this.price = price;
-        this.category = category;
-        this.rating = rating;
-    }
 }
