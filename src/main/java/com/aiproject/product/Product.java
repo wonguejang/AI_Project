@@ -11,11 +11,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Product {
 	@Id
@@ -33,4 +37,12 @@ public class Product {
 	
 	@OneToMany(mappedBy="product")
 	private List<Cart> carts = new ArrayList<>();
+	
+    public Product(Integer productIdx, String productName, int price, String category, int rating) {
+        this.productIdx = productIdx;
+        this.productName = productName;
+        this.price = price;
+        this.category = category;
+        this.rating = rating;
+    }
 }

@@ -1,0 +1,184 @@
+/* Product detail page specific styles */
+.detail-page-container {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.product-image-section {
+    flex: 1;
+    min-width: 0;
+}
+
+.main-product-image {
+    width: 100%;
+    height: auto;
+}
+
+.product-info-section {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.product-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.total-price-box {
+    text-align: right;
+    margin: 30px 0;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.total-price-box .total-price {
+    font-size: 1.8em;
+    color: #e50914;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.add-to-cart-btn { background-color: #888; }
+.buy-now-btn { background-color: #000; }
+.wishlist-btn { 
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.product-detail-description {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.product-detail-description img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.kakaopay-btn{
+    background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcEaPmw%2FbtrcIUODymI%2FAAAAAAAAAAAAAAAAAAAAAJ66dlufqQ8CmrywsO5eQdaR-ALF_-6jbvFe4nRJZzfn%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DHLT9Tz0V%252BCYDjQWWggf5mrQV6S4%253D");
+    background-position: center;
+    background-size: cover;
+}
+
+.reply-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.reply-section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+/* 리뷰 작성 폼 */
+.reply-form {
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+}
+
+.reply-form h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    height: 100px;
+}
+
+.submit-reply-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+/* 리뷰 목록 */
+.reply-list h3 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.reply-item {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.reply-meta {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.reply-writer {
+    font-weight: bold;
+    color: #333;
+}
+
+.no-replys {
+    text-align: center;
+    color: #888;
+    padding: 30px;
+}
+
+textarea {
+    resize: none;        
+}

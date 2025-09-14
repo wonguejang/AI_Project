@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>AiProject</title>
+    <!-- 공용 CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <!-- 개별 CSS: HTML 파일에서 넘긴 pageCss 변수 참조 -->
+    <link rel="stylesheet" th:if="${pageCss != null}" th:href="@{/css/{page}.css(page=${pageCss})}" />
+</head>
+<body>
+    <div th:replace="~{header :: headerFragment}"></div>
+    <th:block layout:fragment="content"></th:block>
+    <div th:replace="~{footer :: footerFragment}"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/insert.css}" />        
+		<div class="gtml-document-wrapper">
+	        <div class="gtml-document">
+	            <div class="left-panel">
+	                <div class="drop-zone">
+	                    <p>이미지를 여기에 드롭하세요</p>
+	                </div>
+	                <div class="product-info-group">
+	                    <input type="text" class="product-name" placeholder="상품 이름">
+	                    <input type="text" class="ai-tags" placeholder="AI 자동 태그 (예: 바지, 상의)">
+						<input type="submit" class="insert-btn" value="상품 등록하기" />
+	                </div>
+	            </div>
+	            <div class="right-panel">
+	                <div class="description-1">
+	                    <input class="light-product" type="text" 가벼운 설명을 적어두는 곳/>
+	                </div>
+	                <div class="description-2">
+	                    <p>AI 컨설팅으로 설명 리팩토링</p>
+	                </div>
+	                <div class="description-3">
+	                    <input class="Heavy-product" type="text" 가벼운 설명을 적어두는 곳/>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</html>
