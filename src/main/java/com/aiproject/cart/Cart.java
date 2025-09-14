@@ -1,5 +1,7 @@
 package com.aiproject.cart;
 
+import java.time.LocalDateTime;
+
 import com.aiproject.member.Member;
 import com.aiproject.product.Product;
 
@@ -10,11 +12,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Cart {
 	@Id
@@ -35,4 +41,8 @@ public class Cart {
 	private Member member;
 	
 	private Integer quantity;
+	
+	private LocalDateTime orderDate;
+	
+	
 }

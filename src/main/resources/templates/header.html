@@ -1,0 +1,15 @@
+<div th:fragment="headerFragment">
+	<header class="main-header">
+	    <div class="container">
+	        <div class="logo">
+	            <a href="#">
+	                <img src="/images/UULogo.png" alt="UU 로고">
+	            </a>
+	        </div>
+	        <div class="utility-nav">
+	            <a href="#">로그인</a>
+	            <a href="/cart" th:if="${logincheck}">장바구니</a>
+	        </div>
+	    </div>
+	</header>
+</div>

@@ -1,0 +1,65 @@
+<html layout:decorate="~{layout}">
+    <div layout:fragment="content">
+        <link rel="stylesheet" th:href="@{/css/cart.css}" />    
+        <main class="cart-container">
+            <div class="container">
+                <h1 class="cart-title">장바구니</h1>
+
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <div class="item-details">
+                            <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 이미지" class="item-image">
+                            <div class="item-info">
+                                <span class="item-name">상품명 1</span>
+                            </div>
+                        </div>
+                        
+                        <div class="item-controls">
+                            <span class="item-price">26,000원</span>
+                            <div class="quantity-control">
+                                <input type="number" id="quantity" value="1" min="1">
+                            </div>
+                            <span class="item-total-price">26,000원</span>
+                            <button class="item-remove">삭제</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-details">
+                            <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 이미지" class="item-image">
+                            <div class="item-info">
+                                <span class="item-name">상품명 2</span>
+                            </div>
+                        </div>
+                        
+                        <div class="item-controls">
+                            <span class="item-price">26,000원</span>
+                            <div class="quantity-control">
+                                <input type="number" id="quantity" value="1" min="1">
+                            </div>
+                            <span class="item-total-price">26,000원</span>
+                            <button class="item-remove">삭제</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-line">
+                        <span class="summary-label">총 상품 금액</span>
+                        <span class="summary-value">52,000원</span>
+                    </div>
+                    <div class="summary-line">
+                        <span class="summary-label">배송비</span>
+                        <span class="summary-value">3,000원</span>
+                    </div>
+                    <div class="summary-line total-final">
+                        <span class="summary-label">총 결제 금액</span>
+                        <span class="summary-value final-price">55,000원</span>
+                    </div>
+
+                    <button class="checkout-btn">주문하기</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</html>

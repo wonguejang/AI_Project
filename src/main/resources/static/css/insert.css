@@ -1,0 +1,108 @@
+.gtml-document-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.gtml-document {
+    display: flex;
+    width: 1000px;
+    height: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.right-panel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+
+.drop-zone {
+    width: 100%;
+    height: 350px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    background-color: #f9f9f9;
+    font-size: 1.2rem;
+    transition: border-color 0.3s;
+}
+
+.drop-zone:hover {
+    border-color: #007bff;
+}
+
+.product-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-name, .ai-tags {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.ai-tags {
+    background-color: #e9ecef;
+    color: #6c757d;
+    width: 95%;
+}
+
+.insert-btn {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    margin-left: 350px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.right-panel > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+.description-1 {
+    height: 150px;
+}
+
+.description-2 {
+    height: 350px;
+}
+
+.description-3 {
+    height: 300px;
+}
+
+.Heavy-product, .light-product {
+    height: 100%;
+    width: 100%;
+}
