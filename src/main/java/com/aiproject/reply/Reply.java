@@ -2,11 +2,15 @@ package com.aiproject.reply;
 
 import java.time.LocalDateTime;
 
+import com.aiproject.member.Member;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,11 +28,9 @@ public class Reply {
 	@Column(length = 2000)
 	private String content;
 	
-	//uk에 fk가 안걸려요 ㅠㅠ
-	//member테이블의 pk가 Integer여야함 (시큐에서 쓰는 findbyid가 Integer 타입...)
-	//근데 작성자를 번호로 할 수 없어서 아이디에 uk걸었는데 fk가 안걸림
-	//hibernate이 자꾸 id를 바라봐서 uk에 매핑이 안되요...ㅠ
-	private String writer;
+	@ManyToOne
+	@JoinColumn(name = "memberEmail", referencedColumnName = "memberEmail")
+	private Member member;
 	
 	private LocalDateTime writeDate;
 }

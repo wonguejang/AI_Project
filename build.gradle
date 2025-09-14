@@ -57,6 +57,11 @@ dependencies {
     // --- Jakarta Mail ---
     implementation 'com.sun.mail:jakarta.mail:2.0.1'
 	
+	  // OAuth2
+   implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+   
+   //페이 결제하기위한 Spring WebFlux 기반 비동기/논블로킹 웹 애플리케이션을 쉽게 만들도록 도와주는 스타터
+   implementation 'org.springframework.boot:spring-boot-starter-webflux'
 }
 
 tasks.named('test') {
