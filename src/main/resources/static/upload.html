@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dropzone JSP 업로드</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+</head>
+<body>
+    <h2>파일 드래그 앤 드롭 업로드</h2>
+
+    <form action="upload" class="dropzone" id="my-dropzone"></form>
+
+    <script>
+		Dropzone.options.myDropzone = {
+		    paramName: "file",
+		    maxFilesize: 5,
+		    acceptedFiles: ".jpg,.png,.gif,.pdf",
+		    success: function(file, response) {
+		        alert("업로드 완료: " + response);
+		    }
+		};
+    </script>
+</body>
+</html>
