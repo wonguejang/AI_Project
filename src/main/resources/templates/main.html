@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html layout:decorate="~{layout}">
     <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/main.css}" />    
@@ -35,4 +36,167 @@
 	        </div>
 	    </main>
     </div>
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스내지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+	body {
+	    font-family: Arial, sans-serif;
+	    margin: 0;
+	    padding: 0;
+	    line-height: 1.6;
+	}
+
+	.container {
+	    max-width: 1200px; /* 콘텐츠 영역의 최대 너비 설정 */
+	    margin: 0 auto; /* 가운데 정렬 */
+	    padding: 0 20px;
+	}
+
+	/* 헤더 스타일 */
+	.main-header {
+	    background-color: #fff;
+	    padding: 20px 0;
+	    border-bottom: 1px solid #eee;
+	}
+
+	.main-header .container {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	}
+
+	.logo img {
+	    height: 40px;
+	}
+
+	.main-nav ul {
+	    list-style: none;
+	    padding: 0;
+	    margin: 0;
+	    display: flex;
+	    gap: 20px;
+	}
+
+	.main-nav a,
+	.utility-nav a {
+	    text-decoration: none;
+	    color: #333;
+	    font-weight: bold;
+	}
+
+	/* 메인 비주얼 스타일 */
+	.main-visual img {
+	    width: 100%;
+	    display: block;
+	}
+
+	/* 상품 목록 스타일 */
+	.product-list {
+	    padding: 40px 0;
+	}
+
+	.product-list h2 {
+	    text-align: center;
+	    margin-bottom: 30px;
+	    font-size: 2em;
+	}
+
+	.products {
+	    display: grid;
+	    grid-template-columns: repeat(4, 1fr); /* 4개 열로 나누기 */
+	    gap: 20px;
+	}
+
+	.product-item {
+	    text-align: center;
+	}
+
+	.product-item img {
+	    width: 100%;
+	    height: auto;
+	}
+
+	.product-name {
+	    margin: 10px 0 5px;
+	    font-weight: bold;
+	}
+
+	.product-price {
+	    color: #888;
+	}
+
+	/* 푸터 스타일 */
+	.main-footer {
+	    background-color: #f8f8f8;
+	    color: #666;
+	    padding: 20px 0;
+	    text-align: center;
+	    font-size: 0.9em;
+	}
+</style>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+					<img src="/images/UULogo.png" alt="UU 로고">
+                </a>
+            </div>
+            <div class="utility-nav">
+                <a href="#">로그인</a>
+                <a href="/cart" th:if="${logincheck}">장바구니</a>
+            </div>
+        </div>
+    </header>
+	
+    <section class="main-visual">
+        <div class="container">
+            <img src="main-banner.jpg" alt="메인 배너">
+        </div>
+    </section>
+
+    <main class="product-list">
+        <div class="container">
+            <h2>BEST 상품</h2>
+            <div class="products">
+                <div class="product-item">
+                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 1">
+                    <p class="product-name">상품 이름</p>
+                    <p class="product-price">10,000원</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
+                    <p class="product-name">상품 이름</p>
+                    <p class="product-price">20,000원</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
+                    <p class="product-name">상품 이름</p>
+                    <p class="product-price">20,000원</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
+                    <p class="product-name">상품 이름</p>
+                    <p class="product-price">20,000원</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>회사명: UU | 주소: 서울시 마포구</p>
+            <p>고객센터: 1234-5678</p>
+        </div>
+    </footer>
+</body>
+>>>>>>> branch 'main' of https://github.com/wonguejang/AI_Project.git
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html layout:decorate="~{layout}">
     <div layout:fragment="content">
 	<link rel="stylesheet" th:href="@{/css/signup.css}" />
@@ -52,4 +53,258 @@
             </form>
         </div>
     </div>
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | UU</title>
+    <style>
+        /* 전체 페이지 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            padding: 0;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 헤더 스타일 --- */
+        .main-header {
+            background-color: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .utility-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        /* --- 회원가입 폼 컨테이너 스타일 --- */
+        .join-container {
+            width: 800px;
+            margin: 40px auto; /* 헤더, 푸터와의 간격 추가 */
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* 페이지 제목 */
+        .join-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* 폼 제목 */
+        .form-section-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+        }
+
+        /* 각 폼 그룹 */
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        /* 필수 입력 표시 */
+        .required {
+            color: #e5544a;
+            margin-right: 5px;
+        }
+        
+        .form-group label {
+            width: 150px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-field {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-field input[type="text"],
+        .form-field input[type="password"] {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-field input[type="text"]:focus,
+        .form-field input[type="password"]:focus {
+            border-color: #333;
+            outline: none;
+        }
+
+        .form-field .btn-check {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            color: #555;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .form-field .btn-check:hover {
+            background-color: #eee;
+        }
+        
+        .validation-message {
+            font-size: 0.8em;
+            color: #888;
+            margin-left: 150px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        
+        /* 주소 입력 필드 */
+        .address-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .address-fields .address-top input {
+            width: 150px;
+        }
+
+        .address-fields .address-middle input {
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        /* 버튼 */
+        .form-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-submit {
+            padding: 15px 50px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background-color: #000;
+        }
+        
+        /* --- 푸터 스타일 --- */
+        .main-footer {
+            background-color: #f8f8f8;
+            color: #666;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="/images/UULogo.png" alt="UU 로고">
+                </a>
+            </div>
+            <div class="utility-nav">
+                <a href="#">로그인</a>
+                <a href="/cart" th:if="${logincheck}">장바구니</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="join-container">
+        <h1 class="join-title">회원가입</h1>
+        <form>
+            <h2 class="form-section-title">기본 정보</h2>
+            
+            <div class="form-group">
+                <label for="id"><span class="required">*</span>아이디</label>
+                <div class="form-field">
+                    <input type="text" id="id" name="id" required>
+                    <button type="button" class="btn-check">중복확인</button>
+                </div>
+            </div>
+            <p class="validation-message">영문 소문자/숫자, 4~16자</p>
+
+            <div class="form-group">
+                <label for="password"><span class="required">*</span>비밀번호</label>
+                <div class="form-field">
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+            <p class="validation-message">영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 10자~16자</p>
+
+            <div class="form-group">
+                <label for="password-confirm"><span class="required">*</span>비밀번호 확인</label>
+                <div class="form-field">
+                    <input type="password" id="password-confirm" name="password_confirm" required>
+                </div>
+            </div>
+            <p class="validation-message">비밀번호를 한번 더 입력해 주세요.</p>
+            
+            <div class="form-group">
+                <label for="name"><span class="required">*</span>이름</label>
+                <div class="form-field">
+                    <input type="text" id="name" name="name" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email"><span class="required">*</span>이메일</label>
+                <div class="form-field">
+                    <input type="text" id="email" name="email" required>
+                    <button type="button" class="btn-check">이메일인증</button>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="btn-submit">회원가입</button>
+            </div>
+        </form>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>회사명: UU | 주소: 서울시 마포구</p>
+            <p>고객센터: 1234-5678</p>
+        </div>
+    </footer>
+</body>
+>>>>>>> branch 'main' of https://github.com/wonguejang/AI_Project.git
 </html>

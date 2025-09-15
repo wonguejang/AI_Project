@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.aiproject.cart.Cart;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,9 @@ public class Product {
 	private Integer productIdx;
 	
 	private String productName;
+	
+	@Column(length=4000)
+	private String productImg;
 	
 	private Integer price;
 	
