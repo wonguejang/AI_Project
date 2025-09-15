@@ -18,8 +18,6 @@ import jakarta.persistence.SequenceGenerator;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @Getter
 @Setter
 @Entity
@@ -28,12 +26,11 @@ public class Member {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member")
 	@SequenceGenerator(name="member", sequenceName="seq_member_idx", allocationSize=1)
 	private Integer memberIdx;
-			
-
-	private String memberPw;
 
 	@Column(unique = true)
 	private String memberEmail;
+
+	private String memberPw;
 
 	private String memberName;
 	
