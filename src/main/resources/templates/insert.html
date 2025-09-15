@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html layout:decorate="~{layout}">
     <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/insert.css}" />        
@@ -28,3 +29,225 @@
 	    </div>
 	</div>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 정보 입력</title>
+    <style>
+        /* GTML 문서와 헤더/푸터를 위한 CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 헤더 스타일 --- */
+        .main-header {
+            background-color: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .utility-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* --- GTML 문서 스타일 --- */
+        .gtml-document-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0; /* 헤더와 GTML 문서 사이 간격 */
+        }
+
+        .gtml-document {
+            display: flex;
+            width: 1000px;
+            height: 700px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        .right-panel {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .drop-zone {
+            width: 100%;
+            height: 350px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            background-color: #f9f9f9;
+            font-size: 1.2rem;
+            transition: border-color 0.3s;
+        }
+
+        .drop-zone:hover {
+            border-color: #007bff;
+        }
+
+        .product-info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-name, .ai-tags {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+		.insert-btn{
+			background-color: #e9ecef;
+			color: #6c757d;
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+			margin-left: 350px;
+			margin-top: 30px;
+			border-radius: 10px;
+		}
+
+        .ai-tags {
+            background-color: #e9ecef;
+            color: #6c757d;
+			width: 95%;
+        }
+
+        .right-panel > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .description-1 {
+            height: 150px;
+        }
+
+        .description-2 {
+            height: 350px;
+        }
+
+        .description-3 {
+            height: 300px;
+        }
+
+        /* --- 푸터 스타일 --- */
+        .main-footer {
+            background-color: #f8f8f8;
+            color: #666;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+            width: 100%;
+            margin-top: auto; /* 페이지 하단에 고정 */
+        }
+		.Heavy-product, .light-product{
+			height: 100%;
+			width: 100%;
+		}
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#">
+                    <img src="/images/UULogo.png" alt="UU 로고">
+                </a>
+            </div>
+            <div class="utility-nav">
+                <a href="#">로그인</a>
+                <a href="/cart" th:if="${logincheck}">장바구니</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="gtml-document-wrapper">
+        <div class="gtml-document">
+            <div class="left-panel">
+                <div class="drop-zone">
+                    <p>이미지를 여기에 드롭하세요</p>
+                </div>
+                <div class="product-info-group">
+                    <input type="text" class="product-name" placeholder="상품 이름">
+                    <input type="text" class="ai-tags" placeholder="AI 자동 태그 (예: 바지, 상의)">
+					<input type="submit" class="insert-btn" value="상품 등록하기" />
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="description-1">
+                    <input class="light-product" type="text" 가벼운 설명을 적어두는 곳/>
+                </div>
+                <div class="description-2">
+                    <p>AI 컨설팅으로 설명 리팩토링</p>
+                </div>
+                <div class="description-3">
+                    <input class="Heavy-product" type="text" 가벼운 설명을 적어두는 곳/>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <footer class="main-footer">
+        <div class="container">
+            <p>회사명: UU | 주소: 서울시 마포구</p>
+            <p>고객센터: 1234-5678</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+>>>>>>> branch 'main' of https://github.com/wonguejang/AI_Project.git
