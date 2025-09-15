@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aiproject.cart.Cart;
+import com.aiproject.reply.Reply;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,12 +28,13 @@ public class Member {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member")
 	@SequenceGenerator(name="member", sequenceName="seq_member_idx", allocationSize=1)
 	private Integer memberIdx;
-	
+			
+
 	private String memberPw;
 
 	@Column(unique = true)
 	private String memberEmail;
-	
+
 	private String memberName;
 	
 	//데이터 타입 뭘로할지(enum 괜춘할듯?)
@@ -42,7 +44,9 @@ public class Member {
 	@Column(length=500)
 	private String token;
 	
-	
 	@OneToMany(mappedBy="member")
 	private List<Cart> carts = new ArrayList<>();
+	
+	@OneToMany(mappedBy="member")
+	private List<Reply> replies = new ArrayList<>();
 }
