@@ -56,7 +56,7 @@ class AiProjectApplicationTests {
 
 	    Reply r1 = new Reply();
 	    r1.setContent("바지주제에 30만원..?");
-	    r1.setWriter(member.getMemberEmail());
+	    r1.getMember().getMemberEmail();
 	    r1.setWriteDate(LocalDateTime.now());
 	    rRepo.save(r1);
 	}
