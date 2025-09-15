@@ -12,7 +12,14 @@ public class MemberCreateForm {
 	
 	@NotEmpty(message="이메일은 필수 입니다.")
 	private String memberEmail;
-
 	
+	@NotEmpty(message="비밀번호는 필수 입니다.")
+	private String memberPw1;
+	
+	@NotEmpty(message="비밀번호 확인은 필수 입니다.")
+	private String memberPw2;
+	
+	@NotEmpty(message="이름은 필수 입니다")
+	private String memberName;
 	
 }
