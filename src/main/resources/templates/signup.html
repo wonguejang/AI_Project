@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="memberEmail"><span class="required">*</span>이메일</label>
                     <div class="form-field">
-                        <input type="text" th:field="*{memberEmail}" required />
+                        <input type="email" th:field="*{memberEmail}" required />
                         <button type="button" class="btn-check">이메일인증</button>
                     </div>
                     <p th:if="${#fields.hasErrors('memberEmail')}" 
@@ -62,8 +62,4 @@
             </form>
         </div>
     </div>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> refs/remotes/origin/main
