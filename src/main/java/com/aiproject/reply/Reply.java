@@ -29,7 +29,7 @@ public class Reply {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name = "memberEmail", referencedColumnName = "memberEmail")
+	@JoinColumn(name = "memberEmail")
 	private Member member;
 	
 	private LocalDateTime writeDate;

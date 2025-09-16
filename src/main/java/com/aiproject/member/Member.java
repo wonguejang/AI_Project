@@ -41,6 +41,10 @@ public class Member {
 	@Column(length=500)
 	private String token;
 	
+	private boolean enabled = false;
+	
+	private String verificationToken;
+	
 	@OneToMany(mappedBy="member")
 	private List<Cart> carts = new ArrayList<>();
 	
