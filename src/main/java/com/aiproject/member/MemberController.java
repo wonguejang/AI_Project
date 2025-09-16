@@ -23,18 +23,19 @@ public class MemberController {
 	
 	@GetMapping("/signup")
 	public String signup(Model model) {
+		model.addAttribute("memberCreateForm", new MemberCreateForm());
 		return "signup";
 	}
 	
 	@PostMapping("/signup_form")
 	public String signup(@Valid MemberCreateForm memberCreateForm, BindingResult br) {
 		if(br.hasErrors()) {
-			return "signup_form";
+			return "signup";
 		}
 
 		if(!memberCreateForm.getMemberPw1().equals(memberCreateForm.getMemberPw2())) {
-			br.rejectValue("userPw2", "passwordIncorect중x", "2개의 비밀번호가 일치하지 않음");
-			return "signup_form";
+			br.rejectValue("memberPw2", "passwordIncorect중x", "2개의 비밀번호가 일치하지 않음");
+			return "signup";
 		}
 		
 		String id = memberCreateForm.getMemberEmail();
@@ -42,7 +43,7 @@ public class MemberController {
 		String name = memberCreateForm.getMemberName();
 		mSvc.create(id, pw, name);
 		
-		return "redirect:/main";
+		return "redirect:/member/login";
 		
 	}
 	

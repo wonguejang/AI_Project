@@ -6,7 +6,7 @@
             <h1 class="join-title">회원가입</h1>
 
             <!-- MemberCreateForm DTO와 바인딩 -->
-            <form th:action="@{/signup}" th:object="${memberCreateForm}" method="post">
+            <form th:action="@{/member/signup_form}" th:object="${memberCreateForm}" method="post">
 
                 <h2 class="form-section-title">기본 정보</h2>
 
@@ -17,9 +17,9 @@
                         <input type="text" th:field="*{memberEmail}" required />
                         <button type="button" class="btn-check">이메일인증</button>
                     </div>
-                    <p th:if="${#fields.hasErrors('memberEmail')}" 
-                       th:errors="*{memberEmail}" class="validation-message"></p>
                 </div>
+                <p th:if="${#fields.hasErrors('memberEmail')}" 
+                   th:errors="*{memberEmail}" class="validation-message"></p>
 
                 <!-- 비밀번호 -->
                 <div class="form-group">
@@ -27,12 +27,12 @@
                     <div class="form-field">
                         <input type="password" th:field="*{memberPw1}" required />
                     </div>
-                    <p class="validation-message">
-                        영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 10자~16자
-                    </p>
-                    <p th:if="${#fields.hasErrors('memberPw1')}" 
-                       th:errors="*{memberPw1}" class="validation-message"></p>
                 </div>
+                <p class="validation-message">
+                    영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 10자~16자
+                </p>
+                <p th:if="${#fields.hasErrors('memberPw1')}" 
+                   th:errors="*{memberPw1}" class="validation-message"></p>
 
                 <!-- 비밀번호 확인 -->
                 <div class="form-group">
@@ -40,10 +40,10 @@
                     <div class="form-field">
                         <input type="password" th:field="*{memberPw2}" required />
                     </div>
-                    <p class="validation-message">비밀번호를 한번 더 입력해 주세요.</p>
-                    <p th:if="${#fields.hasErrors('memberPw2')}" 
-                       th:errors="*{memberPw2}" class="validation-message"></p>
                 </div>
+                <p class="validation-message">비밀번호를 한번 더 입력해 주세요.</p>
+                <p th:if="${#fields.hasErrors('memberPw2')}" 
+                   th:errors="*{memberPw2}" class="validation-message"></p>
 
                 <!-- 이름 -->
                 <div class="form-group">
@@ -51,9 +51,9 @@
                     <div class="form-field">
                         <input type="text" th:field="*{memberName}" required />
                     </div>
-                    <p th:if="${#fields.hasErrors('memberName')}" 
-                       th:errors="*{memberName}" class="validation-message"></p>
                 </div>
+                <p th:if="${#fields.hasErrors('memberName')}" 
+                   th:errors="*{memberName}" class="validation-message"></p>
 
                 <!-- 버튼 -->
                 <div class="form-buttons">
