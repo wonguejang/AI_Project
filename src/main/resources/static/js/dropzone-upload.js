@@ -1,0 +1,40 @@
+// 드롭존 라이브러리기능 커스텀 js임
+// dropzone 라이브 러리에서 id="myDropzone" 기준으로 옵션을 지정하는 방법임
+// 여기서 myDropzone 은 <form id="myDropzone" class="dropzone"></form>이랑 연결됨
+Dropzone.options.myDropzone = {
+    autoProcessQueue: false,	// 올려진 파일 자동으로 서버에 넘어가는거 막는 드롭존 자체 명령어
+	
+	//드롭존 초기화 함수 (init : dropzone라이브러리에서 제공하는 초기화 호출함수임 addedfile, removedfile 호출이 가능함(저장,삭제일듯?))
+    init: function() {
+		const dz = this;
+		
+		// dz.on("addedfile"이(드롭존에 파일 드롭 혹은 선택시 발생함) 그때마다 실행되는 함수 function(file) 여기서 file이 방금 올라온 파일이라함) 함수내용 = if~ else까지 
+        dz.on("addedfile", function(file) {
+            // 파일이면 그대로 업로드
+            if (file.type) { 						// file.type = jpg,png 뭐 이딴거 말하는건데 url로 들어오면 문자열 객체로 들어와서 type이 없음
+                const formData = new FormData();	// FormData를 만들어 서버 /upload에 POST
+                formData.append("file", file);		
+
+                fetch("/upload", { method: "POST", body: formData })
+                    .then(res => res.text())				// 서버에서 보낸 response값 읽는거임
+                    .then(url => {							// 이전 .then(res.text()) 결과가 url 매개변수로 들어오는건데 사실 필요는 없음 디버깅용임 나중에 코드 완성하면 지울?듯 잊어먹지 않았다면..  아마 잊어먹고 있다가 기억나도 형님이 알려줘서 기억난거일듯
+                        console.log("서버 저장 경로:", url);	// 굳이 없어도 되는데 일단은 저장한 내용 확인할려고 넣어둠 alert 찍어두면 형님 불편하실까봐 숨겨놈
+                        // DB에 저장 처리 가능
+                    });
+            } else if (file.dataURL && file.dataURL.startsWith("http")) {	// file.dataURL -> Dropzone이 전달한 파일 객체가 아니라 URL 문자열일때 + file.dataURL.startsWith("http") -> 그 문자열이 “http”로 시작하는지 확인
+                // URL이면 /uploadByUrl 호출									// 이게 뭔소리냐면 file.dataURL : 파일 객체가 아님? + file.dataURL.startsWith("http") : 로컬 파일 아님? 
+                fetch("/uploadByUrl", {										// = 들어온 값이 외부 파일이로구나! -> url저장
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },	// http 요청 헤더 지정 url 인코딩한 키 = 값 보낸다
+                    body: "fileUrl=" + encodeURIComponent(file.dataURL)					// encodeURIComponent(file.dataURL) → URL이나 특수문자가 포함되어도 안전하게 전송		
+                })
+                .then(res => res.text())
+                .then(savedUrl => {
+                    console.log("URL 저장:", savedUrl);		// 파일일때랑 대충 비슷함
+                });
+            } else {
+                console.warn("지원하지 않는 형식:", file);
+            }
+        });
+    }
+};
