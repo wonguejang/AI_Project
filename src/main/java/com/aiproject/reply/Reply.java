@@ -3,6 +3,7 @@ package com.aiproject.reply;
 import java.time.LocalDateTime;
 
 import com.aiproject.member.Member;
+import com.aiproject.product.Product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +32,10 @@ public class Reply {
 	@ManyToOne
 	@JoinColumn(name = "memberEmail", referencedColumnName = "memberEmail")
 	private Member member;
+	
+	@ManyToOne
+	@JoinColumn(name="productIdx")
+	private Product product; 
 	
 	private LocalDateTime writeDate;
 }
