@@ -58,5 +58,11 @@
 	            </div>
 	        </div>
 	    </main>
+		<script th:if="${seungin_message}">
+			alert('[[${seungin_message}]]');
+        </script>
+		<script th:if="${signup_message}">
+			alert('[[${signup_message}]]');
+        </script>
     </div>
 </html>

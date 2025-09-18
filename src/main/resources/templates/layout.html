@@ -20,28 +20,28 @@
 		$(document).ready(function() {
 			$('.btn-check').on('click', function() {
 				let email = $("input[name='memberEmail']").val();
-				
+							
 				if(!email){
-					alert("이메일을 입력해주세요.");
+					alert("이메일을 입력하세요");
 					return;
 				}
-				
+									
 				$.ajax({
-					type:'post',
-					url:'/mail/send',
+					type:'get',
+					url:'/member/checkEmail',
 					data:{email: email},
-					success: function(respose){
+					success: function(response){
 						if(response.success){
-							alert("인증 이메일이 발송되었습니다. 메일을 확인 후 수락버튼을 눌러주세요 ");
+							alert("이미 가입된 이메일 입니다.");
 						}else{
-							alert("메일 발송 실패, 다시 시도해 주세요");
+							alert("사용 가능한 이메일 입니다.");
 						}
 					},
 					error:function(){
 						alert("서버에 오류가 발생했습니다.")
 					}
 				});
-			});		
+			});	
 		});
 	</script>
 		
