@@ -25,9 +25,10 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member")
 	@SequenceGenerator(name="member", sequenceName="seq_member_idx", allocationSize=1)
+	@Column(name="member_idx")
 	private Integer memberIdx;
 
-	@Column(unique = true)
+	@Column(name="member_email", unique = true)
 	private String memberEmail;
 
 	private String memberPw;
