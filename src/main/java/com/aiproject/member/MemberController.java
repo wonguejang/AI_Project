@@ -54,7 +54,7 @@ public class MemberController {
 	@PostMapping("/signup_form")
 	public String signup(@Valid MemberCreateForm memberCreateForm, BindingResult br, RedirectAttributes rttr) {
 		if(br.hasErrors()) {
-			return "signup_form";
+			return "signup";
 		}
 
 		if(!memberCreateForm.getMemberPw1().equals(memberCreateForm.getMemberPw2())) {
@@ -75,7 +75,7 @@ public class MemberController {
 	@GetMapping("/signup/secu")
 	public String verifyEmail(@RequestParam("token") String token, RedirectAttributes rttr) {
 		boolean success = mSvc.verifyByToken(token);
-		
+
 		if(success) {
 	        rttr.addFlashAttribute("seungin_message","이메일 인증이 완료되었습니다. 로그인해주세요.");
 			return "redirect:/member/login";
