@@ -1,13 +1,16 @@
 // 드롭존 라이브러리기능 커스텀 js임
-// dropzone 라이브 러리에서 id="myDropzone" 기준으로 옵션을 지정하는 방법임
-// 여기서 myDropzone 은 <form id="myDropzone" class="dropzone"></form>이랑 연결됨
+// dropzone 라이브러리에서 id="myDropzone" 기준으로 옵션을 지정하는 방법임
+// 여기서 myDropzone 은 <form id="my-dropzone" class="dropzone"></form>이랑 연결됨
 Dropzone.options.myDropzone = {
-    autoProcessQueue: false,	// 올려진 파일 자동으로 서버에 넘어가는거 막는 드롭존 자체 명령어
+    paramName: "file",            			
+    maxFilesize: 5,              	 		
+    acceptedFiles: ".jpg,.png,.gif,.pdf",  	
+    autoProcessQueue: true,       			
 	
 	//드롭존 초기화 함수 (init : dropzone라이브러리에서 제공하는 초기화 호출함수임 addedfile, removedfile 호출이 가능함(저장,삭제일듯?))
     init: function() {
-		const dz = this;
-		
+		const dz = this; // dz = Dropzone 객체
+
 		// dz.on("addedfile"이(드롭존에 파일 드롭 혹은 선택시 발생함) 그때마다 실행되는 함수 function(file) 여기서 file이 방금 올라온 파일이라함) 함수내용 = if~ else까지 
         dz.on("addedfile", function(file) {
             // 파일이면 그대로 업로드
