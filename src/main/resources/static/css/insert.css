@@ -34,7 +34,7 @@
 
 .drop-zone {
     width: 100%;
-    height: 350px;
+    height: 500px;
     border: 2px dashed #ccc;
     border-radius: 8px;
     display: flex;
@@ -46,9 +46,27 @@
     transition: border-color 0.3s;
 }
 
+
+.drop-zone img{
+	margin-top: 8px;
+	width: 450px;
+	height: 100%;
+}
+
+.dz-preview > :not(.dz-image,.dz-remove) {
+     display: none !important;
+}
+
+.dz-remove {
+	position:absolute;
+	margin-left: 415px;
+	margin-top: -445px;
+}
+
 .drop-zone:hover {
     border-color: #007bff;
 }
+
 
 .product-info-group {
     display: flex;
