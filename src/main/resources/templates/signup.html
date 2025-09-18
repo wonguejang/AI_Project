@@ -6,7 +6,7 @@
             <h1 class="join-title">회원가입</h1>
 
             <!-- MemberCreateForm DTO와 바인딩 -->
-            <form th:action="@{/signup}" th:object="${memberCreateForm}" method="post">
+            <form th:action="@{/member/signup_form}" th:object="${memberCreateForm}" method="post">
 
                 <h2 class="form-section-title">기본 정보</h2>
 
@@ -14,8 +14,8 @@
                 <div class="form-group">
                     <label for="memberEmail"><span class="required">*</span>이메일</label>
                     <div class="form-field">
-                        <input type="text" th:field="*{memberEmail}" required />
-                        <button type="button" class="btn-check">이메일인증</button>
+                        <input type="email" th:field="*{memberEmail}" required />
+                        <button type="button" class="btn-check">중복 확인</button>
                     </div>
                     <p th:if="${#fields.hasErrors('memberEmail')}" 
                        th:errors="*{memberEmail}" class="validation-message"></p>
@@ -62,8 +62,4 @@
             </form>
         </div>
     </div>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> refs/remotes/origin/main
