@@ -8,10 +8,42 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
     <!-- 개별 CSS: HTML 파일에서 넘긴 pageCss 변수 참조 -->
     <link rel="stylesheet" th:if="${pageCss != null}" th:href="@{/css/{page}.css(page=${pageCss})}" />
+	
 </head>
 <body>
     <div th:replace="~{header :: headerFragment}"></div>
     <th:block layout:fragment="content"></th:block>
     <div th:replace="~{footer :: footerFragment}"></div>
+	<!-- jQeury-->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('.btn-check').on('click', function() {
+				let email = $("input[name='memberEmail']").val();
+							
+				if(!email){
+					alert("이메일을 입력하세요");
+					return;
+				}
+									
+				$.ajax({
+					type:'get',
+					url:'/member/checkEmail',
+					data:{email: email},
+					success: function(response){
+						if(response.success){
+							alert("이미 가입된 이메일 입니다.");
+						}else{
+							alert("사용 가능한 이메일 입니다.");
+						}
+					},
+					error:function(){
+						alert("서버에 오류가 발생했습니다.")
+					}
+				});
+			});	
+		});
+	</script>
+		
 </body>
 </html>

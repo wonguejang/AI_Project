@@ -30,7 +30,7 @@ public class Reply {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name = "memberEmail", referencedColumnName = "memberEmail")
+	@JoinColumn(name="member_idx", referencedColumnName = "member_idx")
 	private Member member;
 	
 	@ManyToOne

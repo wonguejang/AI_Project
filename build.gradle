@@ -45,23 +45,21 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	
-	    // --- Jackson (JSON 직렬화/역직렬화) ---
+    // --- Jackson (JSON 직렬화/역직렬화) ---
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.17.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
 
-    // --- Jakarta Activation ---
-    implementation 'jakarta.activation:jakarta.activation-api:2.0.1'
-    implementation 'com.sun.activation:jakarta.activation:2.0.1'
-
-    // --- Jakarta Mail ---
-    implementation 'com.sun.mail:jakarta.mail:2.0.1'
-	
-	  // OAuth2
+   // OAuth2
    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
    
    //페이 결제하기위한 Spring WebFlux 기반 비동기/논블로킹 웹 애플리케이션을 쉽게 만들도록 도와주는 스타터
    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+   
+   
+   //javaMail
+   implementation 'org.springframework.boot:spring-boot-starter-mail'
+   
 }
 
 tasks.named('test') {

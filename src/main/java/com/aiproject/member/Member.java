@@ -25,9 +25,10 @@ public class Member {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="member")
 	@SequenceGenerator(name="member", sequenceName="seq_member_idx", allocationSize=1)
+	@Column(name="member_idx")
 	private Integer memberIdx;
 
-	@Column(unique = true)
+	@Column(name="member_email", unique = true)
 	private String memberEmail;
 
 	private String memberPw;
@@ -40,6 +41,10 @@ public class Member {
 	
 	@Column(length=500)
 	private String token;
+	//이메일 인증이 완료인지 확인함
+	//이메일 인증버튼을 누르면 true로 값이 바뀜(일반 id, pw 로그인 시에만)
+	@Column(nullable = false)
+	private boolean verified = false;
 	
 	@OneToMany(mappedBy="member")
 	private List<Cart> carts = new ArrayList<>();

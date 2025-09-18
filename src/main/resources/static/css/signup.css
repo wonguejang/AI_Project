@@ -1,123 +1,114 @@
-    /* 회원가입 폼 컨테이너 스타일 */
-    .join-container {
-        width: 800px;
-        margin: 40px auto;
-        background-color: #fff;
-        padding: 40px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-    }
+/* 회원가입 폼 컨테이너 스타일 */
+.join-container {
+    width: 500px;               /* 조금 더 컴팩트하게 */
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
 
-    /* 페이지 제목 */
-    .join-title {
-        text-align: center;
-        font-size: 2em;
-        margin-bottom: 20px;
-        color: #333;
-    }
+/* 페이지 제목 */
+.join-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-    /* 폼 제목 */
-    .form-section-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #333;
-        margin-bottom: 20px;
-    }
+/* 폼 제목 */
+.form-section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+}
 
-    /* 각 폼 그룹 */
-    .form-group {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-    }
+/* 각 폼 그룹 (세로 배치) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
 
-    /* 필수 입력 표시 */
-    .required {
-        color: #e5544a;
-        margin-right: 5px;
-    }
+/* 필수 입력 표시 */
+.required {
+    color: #e5544a;
+    margin-right: 5px;
+}
 
-    .form-group label {
-        width: 150px;
-        font-weight: bold;
-        color: #555;
-    }
+/* 라벨 */
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
 
-    .form-field {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+/* 입력 필드 컨테이너 */
+.form-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    .form-field input[type="text"],
-    .form-field input[type="password"] {
-        width: 300px;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+/* input 공통 스타일 */
+.form-field input[type="text"],
+.form-field input[type="password"],
+.form-field input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
-    .form-field input[type="text"]:focus,
-    .form-field input[type="password"]:focus {
-        border-color: #333;
-        outline: none;
-    }
+.form-field input:focus {
+    border-color: #333;
+    outline: none;
+}
 
-    .form-field .btn-check {
-        padding: 8px 15px;
-        border: 1px solid #ccc;
-        background-color: #f8f8f8;
-        color: #555;
-        cursor: pointer;
-        border-radius: 4px;
-    }
+/* 이메일 인증 버튼 */
+.form-field .btn-check {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    color: #555;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 40px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
 
-    .form-field .btn-check:hover {
-        background-color: #eee;
-    }
+.form-field .btn-check:hover {
+    background-color: #eee;
+}
 
-    .validation-message {
-        font-size: 0.8em;
-        color: #888;
-        margin-left: 150px;
-        margin-top: -10px;
-        margin-bottom: 15px;
-    }
+/* validation 메시지 */
+.validation-message {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 6px;
+}
 
-    /* 주소 입력 필드 */
-    .address-fields {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+/* 버튼 컨테이너 */
+.form-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
 
-    .address-fields .address-top input {
-        width: 150px;
-    }
+/* 회원가입 버튼 */
+.btn-submit {
+    padding: 14px 50px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
 
-    .address-fields .address-middle input {
-        width: 100%;
-        margin-top: 5px;
-    }
-
-    /* 버튼 */
-    .form-buttons {
-        text-align: center;
-        margin-top: 40px;
-    }
-
-    .btn-submit {
-        padding: 15px 50px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        font-size: 1.2em;
-        cursor: pointer;
-    }
-
-    .btn-submit:hover {
-        background-color: #000;
-    }
+.btn-submit:hover {
+    background-color: #000;
+}
