@@ -1,12 +1,16 @@
 <html layout:decorate="~{layout}">
     <div layout:fragment="content">
-    <link rel="stylesheet" th:href="@{/css/insert.css}" />        
+    <link rel="stylesheet" th:href="@{/css/insert.css}" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+	<script src="/js/dropzone-upload.js"></script>        
 		<div class="gtml-document-wrapper">
 	        <div class="gtml-document">
 	            <div class="left-panel">
+					
 	                <div class="drop-zone">
-	                    <p>이미지를 여기에 드롭하세요</p>
+	                    <form action="/upload" class="dropzone" id="myDropzone"></form>
 	                </div>
+					
 	                <div class="product-info-group">
 	                    <input type="text" class="product-name" placeholder="상품 이름">
 	                    <input type="text" class="ai-tags" placeholder="AI 자동 태그 (예: 바지, 상의)">
