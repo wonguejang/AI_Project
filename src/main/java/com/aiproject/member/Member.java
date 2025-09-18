@@ -46,6 +46,10 @@ public class Member {
 	@Column(nullable = false)
 	private boolean verified = false;
 	
+	private boolean enabled = false;
+	
+	private String verificationToken;
+	
 	@OneToMany(mappedBy="member")
 	private List<Cart> carts = new ArrayList<>();
 	

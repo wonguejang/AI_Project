@@ -1,4 +1,5 @@
 <div th:fragment="headerFragment">
+<<<<<<< HEAD
 	<header class="main-header">
 	    <div class="container">
 	        <div class="logo">
@@ -14,4 +15,19 @@
 	        </div>
 	    </div>
 	</header>
+=======
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a th:href="@{/}">
+                    <img th:src="@{/images/UULogo.png}" alt="UU 로고">
+                </a>
+            </div>
+            <div class="utility-nav">
+				<a th:href="@{/member/login}" sec:authorize="isAnonymous()">로그인</a>
+                <a th:href="@{/cart}" sec:authorize="isAuthenticated()">장바구니</a>
+            </div>
+        </div>
+    </header>
+>>>>>>> refs/remotes/origin/wg
 </div>
