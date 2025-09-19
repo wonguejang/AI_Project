@@ -31,7 +31,6 @@ public class Reply {
 	
 	@ManyToOne
 	@JoinColumn(name="member_idx", referencedColumnName = "member_idx")
-	@JoinColumn(name = "memberEmail")
 	private Member member;
 	
 	@ManyToOne
