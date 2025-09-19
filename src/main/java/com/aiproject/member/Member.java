@@ -52,8 +52,10 @@ public class Member {
 	@Column(nullable = false)
 	private boolean verified = false;
 	
-	private boolean enabled = false;
+	//이거 내용확인좀(뭐하는건지 어디에 쓰는건지)
+//	private boolean enabled = false;
 	
+	//토큰이 저장되었다가 인증 완료되면 null로 바뀜
 	private String verificationToken;
 	
 	@OneToMany(mappedBy="member")
