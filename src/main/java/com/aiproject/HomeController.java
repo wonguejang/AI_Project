@@ -21,16 +21,24 @@ public class HomeController {
 	static final String KAKAO_LOGOUT_URL = "https://kapi.kakao.com/v1/user/logout";
 	
 	@GetMapping("/")
-    public String mainPage(@AuthenticationPrincipal OAuth2User oAuth2User, Model model) {
-        // 기존 일반 로그인 세션 처리 로직이 있다면 여기에 추가 가능 
-        // OAuth2 로그인 사용자 처리
-        if (oAuth2User != null) {
-            Map<String, Object> props = (Map<String, Object>) oAuth2User.getAttribute("properties");
-            String nickname = (props != null) ? (String) props.get("nickname") : (String) oAuth2User.getAttribute("name");
-            model.addAttribute("name", nickname);
-        }
-        return "main"; // 혹은 index 페이지
-    }
+	public String mainPage(@AuthenticationPrincipal Object principal, Model model) {
+	    String nickname = null;
+
+	    if (principal instanceof OAuth2User oAuth2User) {
+	        // 소셜 로그인 사용자
+	        Map<String, Object> props = (Map<String, Object>) oAuth2User.getAttribute("properties");
+	        nickname = (props != null) 
+	            ? (String) props.get("nickname") 
+	            : (String) oAuth2User.getAttribute("name");
+	    } else if (principal instanceof org.springframework.security.core.userdetails.User userDetails) {
+	        // 일반 로그인 사용자
+	        nickname = userDetails.getUsername(); // 여기서 memberEmail 값이 나옴
+	    }
+
+	    model.addAttribute("name", nickname);
+	    return "main";
+	}
+
 
     // 카카오 로그아웃 처리
     @GetMapping("/logout/kakao")

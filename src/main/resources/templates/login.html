@@ -64,8 +64,13 @@
 		<script th:if="${signup_message}">
 			alert('[[${signup_message}]]');
         </script>
-		<script th:if="${param.error}">
-			alert("아이디 또는 비밀번호 오류");
+		<script th:if="${param.error}" th:inline="javascript">
+		    let error = /*[[${param.error[0]}]]*/ 'default';
+		    if (error === 'verify') {
+		        alert("이메일 인증을 완료해야 로그인할 수 있습니다.");
+		    } else {
+		        alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+		    }
 		</script>
     </div>
 </html>
