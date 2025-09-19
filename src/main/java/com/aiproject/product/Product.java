@@ -33,6 +33,10 @@ public class Product {
 	@Column(length=4000)
 	private String productImg;
 	
+	//상품설명 누락 추가(0919)
+	@Column(length=4000)
+	private String productContent;
+	
 	private Integer price;
 	
 	private String category;

@@ -40,8 +40,10 @@ public class Cart {
 	@JoinColumn(name="memberIdx")
 	private Member member;
 	
+	//수량
 	private Integer quantity;
 	
+	//주문일시
 	private LocalDateTime orderDate;
 	
 	
