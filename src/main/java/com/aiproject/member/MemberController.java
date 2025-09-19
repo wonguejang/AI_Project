@@ -19,6 +19,7 @@ import jakarta.validation.Valid;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+
 	@Autowired
 	MemberService mSvc;
 	@Autowired
@@ -59,7 +60,7 @@ public class MemberController {
 
 		if(!memberCreateForm.getMemberPw1().equals(memberCreateForm.getMemberPw2())) {
 			br.rejectValue("memberPw2", "passwordIncorect중x", "2개의 비밀번호가 일치하지 않음");
-			return "signup";
+			return "signup_form";
 		}
 		
 		String id = memberCreateForm.getMemberEmail();

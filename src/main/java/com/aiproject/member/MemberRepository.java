@@ -18,4 +18,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
     // 중복확인 → boolean 대신 int로
     @Query(value = "SELECT COUNT(*) FROM member m WHERE m.member_email = :email", nativeQuery = true)
     int countByMemberEmail(@Param("email") String email);
+    
+    // 카카오 로그인 조회 -> 로그인한 멤버의 타입과 멤버 이메일로 멤버 조회
+    Optional<Member> findByMemberEmailAndLoginType(String memberEmail, LoginType loginType);
 }
