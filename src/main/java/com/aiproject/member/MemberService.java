@@ -23,7 +23,7 @@ public class MemberService {
 	
 	//회원가입
 	@Transactional
-	public Member register(String memberEmail, String memberPw, String name) {
+	public Member register(String memberEmail, String memberPw, String memberName) {
 		if(mRepo.countByMemberEmail(memberEmail) > 0) {
 			throw new IllegalArgumentException("이미 가입된 이메일입니다.");
 		}
@@ -38,7 +38,7 @@ public class MemberService {
 		Member m = new Member();
 		m.setMemberEmail(memberEmail);
 		m.setMemberPw(pwEncoder.encode(memberPw));
-		m.setMemberName(memberPw);
+		m.setMemberName(memberName);
 		m.setLoginType(LoginType.NORMAL);
 		m.setVerified(false);
 		m.setToken(token);
