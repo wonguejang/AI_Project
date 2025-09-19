@@ -22,7 +22,7 @@ public class HomeController {
 	
 	@GetMapping("/")
     public String mainPage(@AuthenticationPrincipal OAuth2User oAuth2User, Model model) {
-        // 기존 일반 로그인 세션 처리 로직이 있다면 여기에 추가 가능
+        // 기존 일반 로그인 세션 처리 로직이 있다면 여기에 추가 가능 
         // OAuth2 로그인 사용자 처리
         if (oAuth2User != null) {
             Map<String, Object> props = (Map<String, Object>) oAuth2User.getAttribute("properties");

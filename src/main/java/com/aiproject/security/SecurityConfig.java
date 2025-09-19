@@ -20,6 +20,10 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/member/login") 
+                .loginProcessingUrl("/member/login")
+                .usernameParameter("memberEmail")
+                .passwordParameter("memberPw")
+                .defaultSuccessUrl("/", true)
                 .permitAll()
             )
             .oauth2Login(oauth -> oauth
