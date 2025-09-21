@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .loginProcessingUrl("/member/login")
                 .usernameParameter("memberEmail")
                 .passwordParameter("memberPw")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/main", true)
                 .failureHandler((request, response, exception) -> {
                     if (exception instanceof org.springframework.security.authentication.DisabledException) {
                         // 이메일 인증 안 된 계정

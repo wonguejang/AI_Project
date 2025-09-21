@@ -1,9 +1,10 @@
+/* ===== 기본 레이아웃 ===== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f8f8f8; /* 일부 페이지는 별도 지정 가능 */
+    background-color: #f8f8f8; /* 필요시 개별 페이지에서 override */
 }
 
 .container {
@@ -12,6 +13,7 @@ body {
     padding: 0 20px;
 }
 
+/* ===== 헤더 ===== */
 .main-header {
     background-color: #fff;
     padding: 20px 0;
@@ -28,13 +30,36 @@ body {
     height: 40px;
 }
 
-.main-nav a,
-.utility-nav a {
+/* 메인 내비게이션 메뉴 */
+.main-nav a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    margin-left: 15px;
 }
 
+/* 로그인/로그아웃 버튼 (헤더 안 모든 a 태그 적용) */
+.main-header a {
+    text-decoration: none;   /* 밑줄 제거 */
+    color: #333;             /* 검정 글씨 */
+    font-weight: normal;     /* 굵기 보통 */
+    font-size: 0.95em;
+    margin-left: 10px;
+}
+
+/* hover 시 */
+.main-header a:hover {
+    color: #000;
+    text-decoration: underline; /* 마우스 올리면 밑줄 */
+}
+
+/* 방문한 링크(visited) 색상도 일반 글씨로 고정 */
+.main-header a:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+/* ===== 푸터 ===== */
 .main-footer {
     background-color: #f8f8f8;
     color: #666;

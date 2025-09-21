@@ -10,6 +10,10 @@ public class ProductDto {
 	
 	private String productName;
 	
+	private String productContent;
+	
+	private String productImg;
+	
 	private Integer price;
 	
 	private String category;
@@ -19,6 +23,8 @@ public class ProductDto {
 	public ProductDto(Product product) {
 		productIdx = product.getProductIdx();
 		productName = product.getProductName();
+		productContent = product.getProductContent();
+		productImg = product.getProductImg();
 		price = product.getPrice();
 		category = product.getCategory();
 		rating = product.getRating();

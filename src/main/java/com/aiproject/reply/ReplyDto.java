@@ -1,5 +1,7 @@
 package com.aiproject.reply;
 
+import java.time.format.DateTimeFormatter;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,8 +20,5 @@ public class ReplyDto {
 		rno = reply.getRno();
 		content = reply.getContent();
 		writer = reply.getMember().getMemberEmail();
-		writeDate = reply.getWriteDate().toString();
-		writeDate = writeDate.replace("T", " ");
-		writeDate = writeDate.substring(0, writeDate.indexOf("."));
-	}
+		writeDate = reply.getWriteDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));	}
 }

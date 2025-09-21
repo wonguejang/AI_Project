@@ -8,14 +8,12 @@
 	                <img src="/images/UULogo.png" alt="UU 로고"></a>-->
 	            </a>
 	        </div>
-	        <div class="utility-nav">
-				<div th:if="${name != null}">
-			        <a th:href="@{/logout}">로그아웃</a>
-			    </div>
-			    <div th:if="${name == null}">
-		            <a th:href="@{/member/login}">로그인</a>
-			    </div>
-	        </div>
+			<div sec:authorize="isAuthenticated()">
+			    <a th:href="@{/logout}">로그아웃</a>
+			</div>
+			<div sec:authorize="isAnonymous()">
+			    <a th:href="@{/member/login}">로그인</a>
+			</div>
 	    </div>
 	</header>
 </div>

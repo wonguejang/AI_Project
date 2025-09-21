@@ -7,32 +7,27 @@
 	        </div>
 	    </section>
 	
-	    <main class="product-list">
-	        <div class="container">
-	            <h2>BEST 상품</h2>
-	            <div class="products">
-	                <div class="product-item">
-	                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 1">
-	                    <p class="product-name">상품 이름</p>
-	                    <p class="product-price">10,000원</p>
-	                </div>
-	                <div class="product-item">
-	                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
-	                    <p class="product-name">상품 이름</p>
-	                    <p class="product-price">20,000원</p>
-	                </div>
-	                <div class="product-item">
-	                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
-	                    <p class="product-name">상품 이름</p>
-	                    <p class="product-price">20,000원</p>
-	                </div>
-	                <div class="product-item">
-	                    <img src="https://shop-phinf.pstatic.net/20231213_274/1702477078077Xw8gu_JPEG/103612966767846041_1901410283.JPG?type=f750_750" alt="상품 2">
-	                    <p class="product-name">상품 이름</p>
-	                    <p class="product-price">20,000원</p>
-	                </div>
-	            </div>
-	        </div>
-	    </main>
+		<main class="product-list">
+		    <div class="container">
+		        <h2>NEW PRODUCT</h2>
+
+		        <!-- 상품이 없을 때 메시지 -->
+		        <div th:if="${products == null or #lists.isEmpty(products)}">
+		            <p>현재 등록된 상품이 없습니다.</p>
+		        </div>
+
+				<!-- 상품이 있을 때만 반복 -->
+				<div class="products" th:if="${products != null and !#lists.isEmpty(products)}">
+				    <a class="product-item" th:each="product : ${products}" th:href="@{/product/{idx}(idx=${product.productIdx})}">
+				        <img th:src="|/${product.productImg}|" th:alt="${product.productName}">
+				        <div class="product-info">
+				            <span class="product-name" th:text="${product.productName}"></span>
+				            <span class="product-price" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')} + '원'"></span>
+				        </div>
+				    </a>
+				</div>
+		    </div>
+		</main>
+
     </div>
 </html>
