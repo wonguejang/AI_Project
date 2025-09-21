@@ -39,7 +39,6 @@ public class HomeController {
 	    return "main";
 	}
 
-
     // 카카오 로그아웃 처리
     @GetMapping("/logout/kakao")
     public String kakaoLogout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
