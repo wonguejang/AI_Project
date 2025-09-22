@@ -2,20 +2,19 @@
 	<header class="main-header">
 	    <div class="container">
 	        <div class="logo">
-	            <a th:href="@{/main}">
-	                <img src="/static-images/UULogo.png" alt="UU 로고">
-	            <!--<a th:href="@{/main}">
-	                <img src="/images/UULogo.png" alt="UU 로고"></a>-->
-	            </a>
+	        	<a th:href="@{/main}">
+	            <img src="/static-images/UULogo.png" alt="UU 로고">
+	        	</a>
 	        </div>
-			<div sec:authorize="isAuthenticated()">
-				<a th:href="@{/insert}" sec:authorize="hasRole('ADMIN')">상품등록</a>
-				<a th:href="@{/cart}">장바구니</a>
-			    <a th:href="@{/logout}">로그아웃</a>
-			</div>
-			<div sec:authorize="isAnonymous()">
-			    <a th:href="@{/member/login}">로그인</a>
-			</div>
+	        <!-- 오른쪽 네비: 상품등록(ADMIN), 로그아웃/로그인 -->
+	        <nav class="main-nav">
+	        	<!-- 관리자만 노출: 상품등록 (로그아웃 왼쪽) -->
+	        	<a sec:authorize="hasRole('ADMIN')" th:href="@{/products/new}">상품등록</a>
+	        	<!-- 인증 상태별 -->
+	        	<a sec:authorize="isAuthenticated()" th:href="@{/cart}">장바구니</a>
+	        	<a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+	        	<a sec:authorize="isAnonymous()" th:href="@{/member/login}">로그인</a>
+	        </nav>
 	    </div>
 	</header>
 </div>

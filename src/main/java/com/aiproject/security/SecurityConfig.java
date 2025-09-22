@@ -2,6 +2,7 @@ package com.aiproject.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,7 +28,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, DaoAuthenticationProvider daoAuthProvider) throws Exception {
         http
             .csrf().disable() // CSRF 비활성화
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+            .authorizeHttpRequests(auth -> auth
+            	// 관리자만 접근
+	    		.requestMatchers("/admin/**").hasRole("ADMIN")
+	    	    .requestMatchers(HttpMethod.GET,  "/products/new").hasRole("ADMIN") // 폼 페이지
+	    	    .requestMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")     // 등록 액션
+	    	    // 나머지는 전부 오픈
+	    	    .anyRequest().permitAll()
+	    	)
             .authenticationProvider(daoAuthProvider)
             .formLogin(form -> form
                 .loginPage("/member/login") 
@@ -74,7 +82,7 @@ public class SecurityConfig {
 
         return http.build();
     }
-
+    
     @Bean
     public PasswordEncoder pwEncoder() {
         return new BCryptPasswordEncoder();

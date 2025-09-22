@@ -1,0 +1,29 @@
+
+<svg width="360" height="120" viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @font-face { font-family: "InterVar"; src: local("Inter"), local("Inter-Variable"); }
+      .brand { font: 700 34px InterVar, Pretendard, "Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", sans-serif; letter-spacing: 2px; fill:#111827; }
+    </style>
+  </defs>
+  <!-- content width: 80(icon)+16(gap)+190(text)=286; left offset=(320-286)/2=17 -->
+  <g transform="translate(17,15)">
+    <!-- Icon (S-1) -->
+    <g>
+      <rect x="0" y="0" width="80" height="80" rx="16" fill="#7B61FF"/>
+      <path d="M24 38h40v28a6.5 6.5 0 0 1-6.5 6.5H30.5A6.5 6.5 0 0 1 24 66V38Z" fill="#FFFFFF"/>
+      <path d="M34 38a10 10 0 0 1 20 0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+      <g stroke="#00E7B3" stroke-width="7" stroke-linecap="round" fill="none">
+        <line x1="22" y1="66" x2="40" y2="66"/>
+        <line x1="40" y1="66" x2="58" y2="54"/>
+      </g>
+      <circle cx="22" cy="66" r="5" fill="#00E7B3"/>
+      <circle cx="40" cy="66" r="5" fill="#00E7B3"/>
+      <circle cx="58" cy="54" r="5" fill="#00E7B3"/>
+    </g>
+    <!-- Wordmark only -->
+    <g transform="translate(96,6)">
+      <text x="0" y="46" class="brand" textLength="190" lengthAdjust="spacingAndGlyphs">AI • FASHION • SHOP</text>
+    </g>
+  </g>
+</svg>
