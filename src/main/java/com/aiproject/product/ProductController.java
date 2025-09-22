@@ -57,7 +57,7 @@ public class ProductController {
 		return replyDto;
 	}
 	
-	@GetMapping("insert")
+	@GetMapping("/products/new")
 	public String insert() {
 		return "insert";
 	}

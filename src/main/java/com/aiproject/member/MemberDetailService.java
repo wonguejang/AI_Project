@@ -1,7 +1,11 @@
 package com.aiproject.member;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,13 +31,20 @@ public class MemberDetailService implements UserDetailsService {
     	Member member = memberRepository.findByMemberEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("사용자 없음: " + email));
 
-    	System.out.println("DB에서 찾은 사용자: " + member.getMemberEmail() + " / "+ member.getMemberPw());
+    	System.out.println("DB에서 찾은 사용자: " + member.getMemberEmail() + " / "+ member.getMemberPw() + " / " + member.getLoginType());
+    	
+    	List<GrantedAuthority> auths = new ArrayList<>();
+        auths.add(new SimpleGrantedAuthority("ROLE_USER")); // 기본 권한
+
+        if (LoginType.ADMIN.equals(member.getLoginType())) {
+            auths.add(new SimpleGrantedAuthority("ROLE_ADMIN")); // 관리자 권한
+        }
     	
         return User.builder()
                 .username(member.getMemberEmail())   // 로그인 아이디
                 .password(member.getMemberPw())      // BCrypt 해시된 비밀번호
                 .disabled(!member.isVerified())
-                .authorities(Collections.emptyList()) // 권한 없으면 빈 리스트
+                .authorities(auths)    
                 .build();
     }
 	
