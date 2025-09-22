@@ -58,4 +58,12 @@ public class CartService {
     	
     	return list;
     }
+    
+    public void delCart(int orderIdx) {
+    	cRepo.deleteById(orderIdx);
+    }
+    
+    public void updateCart(int orderIdx, int quantity) {
+    	cRepo.updateQuantity(orderIdx,quantity);
+    }
 }

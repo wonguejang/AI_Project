@@ -1,7 +1,9 @@
 package com.aiproject.member;
 
 import java.util.Collections;
+import java.util.List;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,12 +31,16 @@ public class MemberDetailService implements UserDetailsService {
 
     	System.out.println("DB에서 찾은 사용자: " + member.getMemberEmail() + " / "+ member.getMemberPw());
     	
-        return User.builder()
-                .username(member.getMemberEmail())   // 로그인 아이디
-                .password(member.getMemberPw())      // BCrypt 해시된 비밀번호
-                .disabled(!member.isVerified())
-                .authorities(Collections.emptyList()) // 권한 없으면 빈 리스트
-                .build();
+    	return User.builder()
+    	        .username(member.getMemberEmail())
+    	        .password(member.getMemberPw())
+    	        .disabled(!member.isVerified())
+    	        .authorities(member.getLoginType() == LoginType.ADMIN
+    	                     ? List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
+    	                     : Collections.emptyList())
+    	        .build();
     }
 	
+    
+    
 }

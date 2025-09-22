@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -54,6 +55,18 @@ public class CartController {
 	        }
 	    }
 	    return response;
+	}
+	
+	@PostMapping("/cart/delete")
+	@ResponseBody
+	public void deleteCart(@RequestParam("orderIdx") int orderIdx) {
+		cSvc.delCart(orderIdx);
+	}
+	
+	@PostMapping("/cart/update")
+	@ResponseBody
+	public void updateCart(@RequestParam("orderIdx") int orderIdx, @RequestParam("quantity") int quantity) {
+		cSvc.updateCart(orderIdx,quantity);
 	}
 	
 }

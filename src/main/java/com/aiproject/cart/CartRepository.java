@@ -19,4 +19,10 @@ public interface CartRepository extends JpaRepository<Cart, Integer> {
 	@Query("DELETE FROM Cart c WHERE c.member.memberIdx = :memberIdx")
 	void cartRemoveAll(@Param("memberIdx") int memberIdx);
 	List<Cart> findByMemberMemberIdx(Integer memberIdx);
+	void deleteById(Integer orderIdx);
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE Cart c SET c.quantity = :quantity WHERE c.orderIdx = :orderIdx")
+	int updateQuantity(@Param("orderIdx") int orderIdx, @Param("quantity") int quantity);
 }

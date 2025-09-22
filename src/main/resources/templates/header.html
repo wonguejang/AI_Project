@@ -9,6 +9,7 @@
 	            </a>
 	        </div>
 			<div sec:authorize="isAuthenticated()">
+				<a th:href="@{/insert}" sec:authorize="hasRole('ADMIN')">상품등록</a>
 				<a th:href="@{/cart}">장바구니</a>
 			    <a th:href="@{/logout}">로그아웃</a>
 			</div>
