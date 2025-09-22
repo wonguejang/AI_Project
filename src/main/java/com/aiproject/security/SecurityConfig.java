@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .permitAll()
             )
             .oauth2Login(oauth -> oauth
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/main", true)
             )
             .logout(logout -> logout
             	    .logoutSuccessHandler((request, response, authentication) -> {
@@ -65,7 +65,7 @@ public class SecurityConfig {
             	                    return;
             	                } 
             	            }
-            	            response.sendRedirect("/");
+            	            response.sendRedirect("/main");
             	        }
             	    })
             	    .invalidateHttpSession(true)

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DropzoneController {
 
-    private final String EXTERNAL_UPLOAD_DIR = "c:/upload/images";
+    private final String EXTERNAL_UPLOAD_DIR = "c:/upload";
     // 드롭존에 jpg등 사진으로 들어왔을때의 경로
     @PostMapping("/upload")
     @ResponseBody
@@ -32,6 +32,6 @@ public class DropzoneController {
     @PostMapping("/uploadByUrl")
     @ResponseBody
     public String handleUrlUpload(@RequestParam("fileUrl") String fileUrl) {
-        return fileUrl; // URL 그대로 DB 저장
+        return fileUrl; // URL 그대로 DB 저장x
     }
 }

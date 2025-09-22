@@ -36,7 +36,7 @@ public class HomeController {
 	    }
 
 	    model.addAttribute("name", nickname);
-	    return "main";
+	    return "/main";
 	}
 
     // 카카오 로그아웃 처리

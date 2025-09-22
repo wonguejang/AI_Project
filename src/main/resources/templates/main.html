@@ -1,6 +1,9 @@
 <html layout:decorate="~{layout}">
     <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/main.css}" />    
+	<script th:if="${message}">
+	    alert('[[${message}]]');
+	</script>
 	    <section class="main-visual">
 	        <div class="container">
 	            <img src="main-banner.jpg" alt="메인 배너">

@@ -1,7 +1,7 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/detail.css}" />
-
+	<script src="/js/addcart.js"></script>
     <main class="detail-page-container">
 
         <!-- 상품 상세 -->
@@ -24,9 +24,10 @@
                 </div>
 
                 <div class="button-group">
-                    <button class="add-to-cart-btn">장바구니</button>
+                    <button class="add-to-cart-btn">장바구니추가</button>
                     <button class="buy-now-btn">바로구매</button>
-                    <button class="kakaopay-btn" onclick="requestKakaoPay()"></button>
+					<button class="kakaopay-btn" th:onclick="'location.href=\'/payment/onebuy/' + ${product.productIdx} + '\';'">
+					</button>
                 </div>
 
                 <div class="shipping-info">
