@@ -8,7 +8,7 @@
 .gtml-document {
     display: flex;
     width: 1000px;
-    height: 700px;
+    height: 750px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     border-radius: 10px;
@@ -74,7 +74,7 @@
     gap: 10px;
 }
 
-.product-name, .ai-tags {
+.product-name, .ai-tags, .price {
     width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -119,8 +119,13 @@
 .description-3 {
     height: 300px;
 }
-
 .Heavy-product, .light-product {
     height: 100%;
     width: 100%;
+	padding: 10px;
+}
+.ai-consulting {
+	height: 100%;
+	width: 100%;
+	text-align: center;
 }

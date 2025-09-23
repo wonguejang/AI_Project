@@ -2,7 +2,8 @@
     <div layout:fragment="content">
     <link rel="stylesheet" th:href="@{/css/insert.css}" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
-	<script src="/js/dropzone-upload.js"></script>        
+	<script src="/js/dropzone-upload.js"></script>      
+	<script src="/js/insertForm.js"></script>  
 		<div class="gtml-document-wrapper">
 	        <div class="gtml-document">
 	            <div class="left-panel">
@@ -14,6 +15,7 @@
 	                <div class="product-info-group">
 	                    <input type="text" class="product-name" placeholder="상품 이름">
 	                    <input type="text" class="ai-tags" placeholder="AI 자동 태그 (예: 바지, 상의)">
+						<input type="text" class="price" placeholder="가격 : ex) 10,000(원)">
 						<input type="submit" class="insert-btn" value="상품 등록하기" />
 	                </div>
 	            </div>
@@ -22,7 +24,7 @@
 	                    <input class="light-product" type="text" 가벼운 설명을 적어두는 곳/>
 	                </div>
 	                <div class="description-2">
-	                    <p>AI 컨설팅으로 설명 리팩토링</p>
+	                    <input class="ai-consulting" type="text" value="컨설팅으로 설명 리팩토링">
 	                </div>
 	                <div class="description-3">
 	                    <input class="Heavy-product" type="text" 가벼운 설명을 적어두는 곳/>
