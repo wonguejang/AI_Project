@@ -108,7 +108,6 @@
 }
 .social-btn {
     background-color: #fff;
-    border: 1px solid #ccc;
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -117,10 +116,13 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+	border: none;
 }
 .social-btn img {
     width: 45px;
     height: 45px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 .signup-wrap {
     margin-top: 40px;

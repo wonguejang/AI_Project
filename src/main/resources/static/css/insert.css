@@ -108,18 +108,15 @@
     border-radius: 5px;
 }
 
-.description-1 {
-    height: 150px;
+
+.description-1, .description-2 {
+    height: 200px;
+}
+.description-1 input {
+    text-align: center;
 }
 
-.description-2 {
-    height: 350px;
-}
-
-.description-3 {
-    height: 300px;
-}
-.Heavy-product, .light-product {
+.light-product {
     height: 100%;
     width: 100%;
 	padding: 10px;

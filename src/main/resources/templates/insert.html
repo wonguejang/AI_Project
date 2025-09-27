@@ -12,22 +12,21 @@
 	                    <form action="/upload" class="dropzone" id="myDropzone"></form>
 	                </div>
 					
-	                <div class="product-info-group">
-	                    <input type="text" class="product-name" placeholder="상품 이름">
-	                    <input type="text" class="ai-tags" placeholder="AI 자동 태그 (예: 바지, 상의)">
-						<input type="text" class="price" placeholder="가격 : ex) 10,000(원)">
+	                <form action="/productInsertAction" class="product-info-group" method="post">
+						<input type="text" class="product-name" name="productName" placeholder="상품 이름">
+						<input type="text" class="ai-tags" name="aiTags" placeholder="AI 자동 태그 (예: 바지, 상의)">
+						<input type="text" class="price" name="price" placeholder="가격 : ex) 10,000(원)">
+						<input type="hidden" name="imageUrl" id="imageUrl">
+						<input type="hidden" name="aiConsulting" id="aiConsulting">
 						<input type="submit" class="insert-btn" value="상품 등록하기" />
-	                </div>
+	                </form>
 	            </div>
 	            <div class="right-panel">
 	                <div class="description-1">
-	                    <input class="light-product" type="text" 가벼운 설명을 적어두는 곳/>
+	                    <input class="light-product" type="text" placeholder="가벼운 설명(엔터시 컨설팅)"/>
 	                </div>
 	                <div class="description-2">
-	                    <input class="ai-consulting" type="text" value="컨설팅으로 설명 리팩토링">
-	                </div>
-	                <div class="description-3">
-	                    <input class="Heavy-product" type="text" 가벼운 설명을 적어두는 곳/>
+	                    <input class="ai-consulting" type="text" placeholder="컨설팅으로 설명 리팩토링">
 	                </div>
 	            </div>
 	        </div>

@@ -1,5 +1,10 @@
 package com.aiproject.product;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
 
@@ -61,4 +66,26 @@ public class ProductController {
 	public String insert() {
 		return "insert";
 	}
+	
+	@PostMapping("/productInsertAction")
+	public String productInsertAction(
+			// 엔터 잘했죠? 칭찬해주셈
+	        @RequestParam("productName") String productName,
+	        @RequestParam("aiTags") String aiTags,
+	        @RequestParam("price") String price,
+	        @RequestParam("aiConsulting") String aiConsulting,
+	        @RequestParam("imageUrl") String imageUrl
+	) {
+		
+		pSvc.insertProduct(
+				productName,
+				aiTags,
+				price,
+				aiConsulting,
+				imageUrl
+				);
+		
+		return "redirect:/main";
+	}
+
 }

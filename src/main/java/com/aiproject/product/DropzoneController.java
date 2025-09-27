@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,15 +13,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.aiproject.ai.GeminiApiService;
+import com.aiproject.ai.Hugging_apiService;
+
 @Controller
 public class DropzoneController {
 
-    private final String EXTERNAL_UPLOAD_DIR = "c:/upload";
+	private final String TEMP_UPLOAD_DIR = "c:/temp";
+    
+    @Autowired
+    Hugging_apiService haSvc;
+    @Autowired
+    GeminiApiService gaSvc;
     // 드롭존에 jpg등 사진으로 들어왔을때의 경로
     @PostMapping("/upload")
     @ResponseBody
     public String handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
-        File dir = new File(EXTERNAL_UPLOAD_DIR);
+        File dir = new File(TEMP_UPLOAD_DIR);
         if (!dir.exists()) dir.mkdirs();
 
         String fileName = file.getOriginalFilename();
@@ -54,18 +63,18 @@ public class DropzoneController {
     
     @PostMapping("/aiTag")
     @ResponseBody
-    public String aiTag(@RequestBody Map<String, String> data) {
-    	String fileUrl = data.get("fileUrl"); // "/images/download_~년~월~일~시~분.png" 혹은 저장된 이미지 이름 "/images/똥싼바지" 이런식으로 옴
-    	String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-//    	String 태그값 = 어쩌구Svc(fileName);  //그 ai 학습된 ai에 이미지 보내기 만약 경로 그대로 필요하시면 바로위에 fileNAme은 삭제하셔도 무방하심 리턴값음 스트링값으로 변환해서 보내주셔야합니다.
-    	return "태그값";
+    public String aiTag(@RequestBody Map<String, String> data) throws Exception {
+        String fileUrl = data.get("fileUrl"); // "/images/파일이름.png"
+        // 저장된 경로 다시 c:/upload/이미지.jpg로 바꿔서 서비스 호출
+        String filePath = "c:/temp/" + fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+        return haSvc.TagLabel(filePath); // 실제 파일 경로 전달
     }
     
     @PostMapping("/aiConsulting")
     @ResponseBody
-    public String aiConsulting(@RequestBody Map<String, String> data) {
-    	String inputText = data.get("inputText");
-    	// 컨설팅된내용 = 어쩌구Svc(inputText); //마찬가지로 스트링값으로 변환해서 주셔야함.
-    	return "컨설팅된내용";
+    public String aiConsulting(@RequestBody Map<String, String> data) throws Exception {
+        String inputText = data.get("inputText");
+        String consultingResult = gaSvc.refine(inputText);
+        return consultingResult;
     }
 }

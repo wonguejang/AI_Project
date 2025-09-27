@@ -25,6 +25,14 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.product-tag {
+	color: blueviolet;
+	border: 2px solid blueviolet;
+	padding: 0px 15px 0px 15px;
+	font-size: 18px;
+}
+
+
 /* hover 효과 */
 .product-item:hover {
     transform: translateY(-5px);
@@ -41,7 +49,7 @@
 /* 상품 이름 + 가격 */
 .product-info {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
     align-items: baseline;
     margin-top: 12px;
@@ -76,3 +84,4 @@
 @media (max-width: 640px) {
     .brand-lockup { width: clamp(180px, 60vw, 360px); }
 }
+

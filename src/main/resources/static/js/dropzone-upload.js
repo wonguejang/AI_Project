@@ -40,6 +40,7 @@ Dropzone.options.myDropzone = {
 					})
                     .then(res => res.text())
                     .then(tagString => {
+						window.tag = tagString; //tag 전역함수에 저장
                         console.log("AI 태그:", tagString);
 						
                         // 태그를 클래스 ai-tag input 박스에 넣기
