@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +22,11 @@ public class ProductService {
 	public List<ProductDto> findAllProduct() {
 		List<ProductDto> products = new ArrayList<>();
 		
-		products = pRepo.findAll().stream().map(ProductDto :: new).collect(Collectors.toList());
+		products = pRepo.findAll(Sort.by(Sort.Direction.DESC, "productIdx"))
+                .stream()
+                .map(ProductDto::new)
+                .collect(Collectors.toList());
+
 		
 		System.out.println("컨트롤러 : " + products.size());
 		
