@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -15,8 +16,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class Hugging_apiService {
-	private final String apiUrl = "https://api-inference.huggingface.co/models/dima806/clothes_image_detection";
-	private final String token = "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";
+
+	@Value("${huggingface.api.url}")
+    private String apiUrl;
+
+    @Value("${huggingface.api.token}")
+    private String token;
+	
 	private final ObjectMapper mapper = new ObjectMapper()
 											.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
@@ -52,10 +58,16 @@ public class Hugging_apiService {
 				.orElse(null);		
 		
 	}
-	// String 변환
+	// 한글 인코딩
 	public String TagLabel(String pathOrUrl) throws Exception {
 	    byte[] bytes = ImageLoader.load(pathOrUrl);
 	    LabelResultDto result = classifyTop(bytes);
-	    return result != null ? result.label : null;
+
+	    if (result != null) {
+	        IncodingLabel incodingLabel = new IncodingLabel();
+	        return incodingLabel.toKorean(result.label); // 한글 변환 적용
+	    }
+	    return null;
 	}
+
 }
