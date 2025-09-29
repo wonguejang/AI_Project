@@ -46,4 +46,5 @@ public class Product {
 	@OneToMany(mappedBy="product")
 	private List<Cart> carts = new ArrayList<>();
 	
+	
 }

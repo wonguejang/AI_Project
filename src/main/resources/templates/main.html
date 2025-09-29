@@ -24,14 +24,14 @@
 				    <a class="product-item" th:each="product : ${products}" th:href="@{/product/{idx}(idx=${product.productIdx})}">
 				        <img th:src="|/${product.productImg}|" th:alt="${product.productName}">
 				        <div class="product-info">
-							<span class="product-tag" th:text="${product.category}"></span><br/>
+							<span class="product-tag" th:text="${product.category}"></span>
 				            <span class="product-name" th:text="${product.productName}"></span>
 				            <span class="product-price" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')} + '원'"></span>
+							<span class="product-reads">👁️<span th:text="${product.rating}"></span></span>
 				        </div>
 				    </a>
 				</div>
 		    </div>
 		</main>
-
     </div>
 </html>

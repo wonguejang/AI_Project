@@ -7,25 +7,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 가벼운 설명 -> AI 컨설팅
-    const lightInput = document.querySelector('.light-product');
-    const consultingInput = document.querySelector('.ai-consulting');
+	const lightInput = document.querySelector('.light-product');
+	const consultingInput = document.querySelector('.ai-consulting');
+	const loadingContainer = document.getElementById('loading-container');
 
-    lightInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            const text = lightInput.value;
-            fetch('/aiConsulting', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ inputText: text })
-            })
-            .then(res => res.text())
-            .then(result => {
-                consultingInput.value = result;
-            })
-            .catch(err => console.error('처리 실패:', err));
-        }
-    });
+	lightInput.addEventListener('keypress', (e) => {
+	    if (e.key === 'Enter') {
+	        e.preventDefault();
+	        loadingContainer.style.display = 'flex'; // 로딩 표시
+	        fetch('/aiConsulting', {
+	            method: 'POST',
+	            headers: { 'Content-Type': 'application/json' },
+	            body: JSON.stringify({ inputText: lightInput.value })
+	        })
+	        .then(res => res.text())
+	        .then(result => {
+	            consultingInput.value = result; // 결과 표시
+	        })
+	        .catch(err => console.error('처리 실패:', err))
+	        .finally(() => {
+	            loadingContainer.style.display = 'none'; // 완료 후 숨김
+	        });
+	    }
+	});
 
     // 폼 submit 전 hidden 값 채우기 + 필수 체크
     const form = document.querySelector('.product-info-group');

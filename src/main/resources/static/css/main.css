@@ -28,7 +28,7 @@
 .product-tag {
 	color: blueviolet;
 	border: 2px solid blueviolet;
-	padding: 0px 15px 0px 15px;
+	padding: 0px 5px 0px 5px;
 	font-size: 18px;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .product-name {
-    font-size: 1.3em;   /* 상품 이름 크게 */
+    font-size: 20px;
     font-weight: bold;
 }
 

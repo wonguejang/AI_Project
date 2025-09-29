@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService {
 	@Autowired
@@ -61,5 +63,11 @@ public class ProductService {
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
+	}
+	
+	@Transactional
+	public void readUpdate(Integer idx) {
+		Product product = pRepo.findById(idx).get();
+		product.setRating(product.getRating() + 1);
 	}
 }

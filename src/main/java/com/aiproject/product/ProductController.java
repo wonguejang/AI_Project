@@ -1,10 +1,5 @@
 package com.aiproject.product;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
 
@@ -19,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aiproject.reply.ReplyDto;
 import com.aiproject.reply.ReplyService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProductController {
@@ -37,7 +34,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product/{idx}")
-	public String productDetail(@PathVariable("idx") Integer idx, Model model, Principal principal) {
+	public String productDetail(@PathVariable("idx") Integer idx, Model model, Principal principal, HttpSession session) {
 		//상품 정보 가져오기(idx => 상품 번호)
 		ProductDto productDetail = pSvc.findById(idx);
 		model.addAttribute("product", productDetail);
@@ -49,6 +46,13 @@ public class ProductController {
 		//로그인 여부 담기
 		boolean isLogin = (principal != null);
 		model.addAttribute("isLogin", isLogin);
+		
+		// 조회수
+		String key = "reads_product_" + idx;
+	    if (session.getAttribute(key) == null) {
+	        pSvc.readUpdate(idx);
+	        session.setAttribute(key, true);
+	    }
 		
 		return "detail";
 	}
