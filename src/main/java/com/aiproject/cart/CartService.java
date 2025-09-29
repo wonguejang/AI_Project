@@ -1,7 +1,7 @@
 package com.aiproject.cart;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,12 +51,10 @@ public class CartService {
     }
     
     public List<Cart> getCartList(String userEmail) {
-    	List<Cart> list = new ArrayList<>();
-    	Optional<Member> member =  mRepo.findByMemberEmail(userEmail);
-    	int memberIdx = member.get().getMemberIdx(); 
-    	list = cRepo.findByMemberMemberIdx(memberIdx);
-    	
-    	return list;
+        Optional<Member> memberOpt = mRepo.findByMemberEmail(userEmail);
+        if (!memberOpt.isPresent()) return Collections.emptyList();
+        int memberIdx = memberOpt.get().getMemberIdx();
+        return cRepo.findByMemberMemberIdx(memberIdx);
     }
     
     public void delCart(int orderIdx) {

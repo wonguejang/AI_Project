@@ -74,7 +74,7 @@
     gap: 10px;
 }
 
-.product-name, .ai-tags, .price {
+.product-name, .ai-tags, .price, #tag-loading {
     width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -109,11 +109,16 @@
 }
 
 
-.description-1, .description-2 {
+.description-1, .description-2, #loading-container {
     height: 200px;
 }
 .description-1 input {
     text-align: center;
+}
+
+#loading-container{
+	background-color: black;
+	color: white;
 }
 
 .light-product {
@@ -135,12 +140,24 @@
 }
 
 .spinner {
+    border-radius: 50%;
+    animation: spin 1s linear infinite, colorChange 2s linear infinite;
+}
+
+/* consulting 전용 */
+.spinner-consulting {
     border: 5px solid #f3f3f3;
     border-top: 5px solid #3498db;
-    border-radius: 50%;
     width: 40px;
     height: 40px;
-    animation: spin 1s linear infinite, colorChange 2s linear infinite;
+}
+
+/* tag 전용 */
+.spinner-tag {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #e67e22;
+    width: 20px;
+    height: 20px;
 }
 
 @keyframes spin {
@@ -154,4 +171,9 @@
     50% { border-top-color: yellow; }
     75% { border-top-color: green; }
     100% { border-top-color: blue; }
+}
+#tag-loading {
+	height: 18px;
+	background-color: black;
+	color: white;
 }

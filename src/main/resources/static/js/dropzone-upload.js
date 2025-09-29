@@ -17,6 +17,8 @@ Dropzone.options.myDropzone = {
     // addedfile, removedfile 호출 가능(파일 업로드/삭제 이벤트)
     init: function() {
         const dz = this; // dz = Dropzone 객체
+        const tagLoading = document.getElementById("tag-loading"); // 태그 로딩창 div
+        const aiTagsInput = document.querySelector(".ai-tags");   // 태그 input
 
         dz.on("addedfile", function(file) {
             // 드롭존 메시지 숨기기
@@ -26,6 +28,10 @@ Dropzone.options.myDropzone = {
             if (file.type) { 						
                 const formData = new FormData();	// FormData를 만들어 서버 /upload에 POST
                 formData.append("file", file);		
+
+                // 태그 로딩 표시, input 숨김
+                aiTagsInput.style.display = "none";
+                tagLoading.style.display = "flex";
 
                 fetch("/upload", { method: "POST", body: formData })
                     .then(res => res.text())				
@@ -44,9 +50,14 @@ Dropzone.options.myDropzone = {
                         console.log("AI 태그:", tagString);
 						
                         // 태그를 클래스 ai-tag input 박스에 넣기
-                        document.querySelector(".ai-tags").value = tagString;
+                        aiTagsInput.value = tagString;
                     })
-                    .catch(err => console.error("업로드/태그 처리 실패:", err));
+                    .catch(err => console.error("업로드/태그 처리 실패:", err))
+                    .finally(() => {
+                        // 태그 로딩 숨기고 input 다시 보이기
+                        tagLoading.style.display = "none";
+                        aiTagsInput.style.display = "block";
+                    });
             } else if (file.dataURL && file.dataURL.startsWith("http")) {	
                 // URL이면 /uploadByUrl 호출
                 fetch("/uploadByUrl", {										

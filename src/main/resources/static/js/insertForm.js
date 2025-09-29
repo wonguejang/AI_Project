@@ -10,11 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	const lightInput = document.querySelector('.light-product');
 	const consultingInput = document.querySelector('.ai-consulting');
 	const loadingContainer = document.getElementById('loading-container');
+	const description2 = document.querySelector('.description-2');
 
 	lightInput.addEventListener('keypress', (e) => {
 	    if (e.key === 'Enter') {
 	        e.preventDefault();
-	        loadingContainer.style.display = 'flex'; // 로딩 표시
+
+	        // textarea 숨기고 로딩창 보여주기
+	        description2.style.display = 'none';
+	        loadingContainer.style.display = 'flex';
+
 	        fetch('/aiConsulting', {
 	            method: 'POST',
 	            headers: { 'Content-Type': 'application/json' },
@@ -26,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	        })
 	        .catch(err => console.error('처리 실패:', err))
 	        .finally(() => {
-	            loadingContainer.style.display = 'none'; // 완료 후 숨김
+	            // 로딩창 숨기고 textarea 다시 보여주기
+	            loadingContainer.style.display = 'none';
+	            description2.style.display = 'flex';
 	        });
 	    }
 	});

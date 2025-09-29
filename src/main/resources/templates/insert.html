@@ -14,6 +14,10 @@
 					
 	                <form action="/productInsertAction" class="product-info-group" method="post">
 						<input type="text" class="product-name" name="productName" placeholder="상품 이름">
+						<div id="tag-loading" style="display:none; align-items:center;">
+						    <div class="spinner spinner-tag"></div>
+						    <span>Gemini AI API를 통해 태그를 생성하는 중</span>
+						</div>
 						<input type="text" class="ai-tags" name="aiTags" placeholder="AI 자동 태그 (예: 바지, 상의)">
 						<input type="text" class="price" name="price" placeholder="가격 : ex) 10,000(원)">
 						<input type="hidden" name="imageUrl" id="imageUrl">
@@ -25,12 +29,12 @@
 	                <div class="description-1">
 	                    <input class="light-product" type="text" placeholder="가벼운 설명(엔터시 컨설팅)"/>
 	                </div>
+					<div id="loading-container" style="display:none; margin-top:5px; align-items:center; gap:5px;">
+					    <div class="spinner spinner-consulting"></div>
+					    <span>Hugging Face API로 표현을 보완하는 중</span>
+					</div>
 					<div class="description-2">
 					    <textarea class="ai-consulting" placeholder="컨설팅으로 설명 리팩토링"></textarea>
-					</div>
-					<div id="loading-container" style="display:none; margin-top:5px; align-items:center; gap:5px;">
-					    <div class="spinner"></div>
-					    <span>잠시 기다려주세요…</span>
 					</div>
 	            </div>
 	        </div>
