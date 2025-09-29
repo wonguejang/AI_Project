@@ -2,6 +2,10 @@
     <div layout:fragment="content">
         <link rel="stylesheet" th:href="@{/css/cart.css}" />
 		<script th:src="@{/js/cart.js}"></script>
+		<script th:inline="javascript">
+		    const errorMsg = /*[[${errorMsg}]]*/ null;
+		    if(errorMsg) alert(errorMsg);
+		</script>
         <main class="cart-container">
             <div class="container">
                 <h1 class="cart-title">장바구니</h1>

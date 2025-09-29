@@ -30,7 +30,14 @@ public class PaymentController {
     //security Authentication객체 소환()현재 로그인한사람 정보 조회
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	String userId = auth.getName();
+	
     int totalPrice = cSvc.TotalPrice(userId);
+    
+    if(totalPrice <= 0) {
+        model.addAttribute("errorMsg", "카트에 상품이 없습니다.");
+        return "cart";
+    }
+    
     															//상품아이디, 구매자이름, 총액
     Map<String, Object> kakaoResponse = kpSvc.readyPayment("HcTestItemByu", userId, totalPrice);
     return "redirect:" + kakaoResponse.get("next_redirect_pc_url");
