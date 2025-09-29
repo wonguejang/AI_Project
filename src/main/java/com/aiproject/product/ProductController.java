@@ -33,6 +33,7 @@ public class ProductController {
 		return "main";
 	}
 	
+	//이거 내가했나...? 기억이안나네
 	@GetMapping("/product/{idx}")
 	public String productDetail(@PathVariable("idx") Integer idx, Model model, Principal principal, HttpSession session) {
 		//상품 정보 가져오기(idx => 상품 번호)
@@ -57,6 +58,7 @@ public class ProductController {
 		return "detail";
 	}
 	
+	//원규 : 해당 상품의 댓글 달기
 	@PostMapping("/reply/add")
 	@ResponseBody
 	public ReplyDto addReply(@RequestParam("productIdx") Integer productIdx, @RequestParam("content") String content, Principal principal) {
@@ -71,6 +73,7 @@ public class ProductController {
 		return "insert";
 	}
 	
+	//상품등록
 	@PostMapping("/productInsertAction")
 	public String productInsertAction(
 			// 엔터 잘했죠? 칭찬해주셈
@@ -78,8 +81,7 @@ public class ProductController {
 	        @RequestParam("aiTags") String aiTags,
 	        @RequestParam("price") String price,
 	        @RequestParam("aiConsulting") String aiConsulting,
-	        @RequestParam("imageUrl") String imageUrl
-	) {
+	        @RequestParam("imageUrl") String imageUrl ) {
 		
 		pSvc.insertProduct(
 				productName,

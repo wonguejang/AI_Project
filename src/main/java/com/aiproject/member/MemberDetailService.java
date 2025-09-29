@@ -25,13 +25,9 @@ public class MemberDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    	System.out.println("loadUserByUsername 호출됨: " + email);
-    	
     	Member member = memberRepository.findByMemberEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("사용자 없음: " + email));
 
-    	System.out.println("DB에서 찾은 사용자: " + member.getMemberEmail() + " / "+ member.getMemberPw() + " / " + member.getLoginType());
-    	
     	List<GrantedAuthority> auths = new ArrayList<>();
         auths.add(new SimpleGrantedAuthority("ROLE_USER")); // 기본 권한
 

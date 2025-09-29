@@ -28,9 +28,6 @@ public class ProductService {
                 .stream()
                 .map(ProductDto::new)
                 .collect(Collectors.toList());
-
-		
-		System.out.println("컨트롤러 : " + products.size());
 		
 		return products;
 	}

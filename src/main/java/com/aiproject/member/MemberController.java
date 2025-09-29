@@ -25,33 +25,32 @@ public class MemberController {
 	@Autowired
 	MemberRepository mRepo;
 	
-	//로그인화면
+	//원규 : 로그인화면
 	@GetMapping("/login")
 	public String loginForm(Model model) {
 		return "login";
 	}
 	
-	//회원가입화면
+	//원규 : 회원가입화면
 	@GetMapping("/signup")
 	public String signup(Model model) {
 		model.addAttribute("memberCreateForm", new MemberCreateForm());
 		return "signup";
 	}
 	
-	//이메일 중복 확인
+	//원규 : 이메일 중복 확인
 	@GetMapping("/checkEmail")
 	@ResponseBody
 	public Map<String, Boolean> checkEmail(@RequestParam("email") String email){
 		boolean exists = mRepo.countByMemberEmail(email) > 0 ;
 		
 		Map<String, Boolean> result = new HashMap<>();
-		
 		result.put("success", exists);
 		
 		return result;
 	}
 	
-	//회원가입처리
+	//원규 : 회원가입처리
 	@PostMapping("/signup_form")
 	public String signup(@Valid MemberCreateForm memberCreateForm, BindingResult br, RedirectAttributes rttr) {
 		if(br.hasErrors()) {
@@ -72,7 +71,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-	//회원가입 후 아이디를 사용할 수 있게 처리
+	//원규 : 이메일 인증하면 여기로 요청이 와서 아이디를 사용할 수 있게 바뀜
 	@GetMapping("/signup/secu")
 	public String verifyEmail(@RequestParam("token") String token, RedirectAttributes rttr) {
 		boolean success = mSvc.verifyByToken(token);
@@ -86,6 +85,7 @@ public class MemberController {
 		}
 	}
 	
+	//원규 : 로그아웃 처리
 	@GetMapping("/logout")
 	public String logout() {
 		return "main";

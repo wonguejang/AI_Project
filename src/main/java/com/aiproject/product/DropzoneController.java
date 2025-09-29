@@ -61,6 +61,7 @@ public class DropzoneController {
         return fileUrl; // URL 그대로 DB 저장x
     }
     
+    //원규 : 사진을 업로드 하면 자동으로 태깅된 값이 들어옴
     @PostMapping("/aiTag")
     @ResponseBody
     public String aiTag(@RequestBody Map<String, String> data) throws Exception {
@@ -70,6 +71,7 @@ public class DropzoneController {
         return haSvc.TagLabel(filePath); // 실제 파일 경로 전달
     }
     
+    //원규 : 간단한 상품설명을 입력하면 ai_api를 호출해 내용을 꾸며줌 
     @PostMapping("/aiConsulting")
     @ResponseBody
     public String aiConsulting(@RequestBody Map<String, String> data) throws Exception {
