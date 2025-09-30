@@ -52,6 +52,7 @@
 - **JPA / Repository** (데이터 액세스)
 - **Spring Scheduler** (유틸성 작업)
 - **Lombok** (코드 간결화)
+- **Spring Security OAuth2** (구글/카카오 소셜 로그인)
 
 ### Frontend
 - **Thymeleaf** (서버 사이드 렌더링)
@@ -86,6 +87,7 @@ src/main/java/com/aiproject
  ├── pay               # 결제 (KakaoPay)
  ├── product           # 상품 관리
  ├── reply             # 댓글 관리
+ ├── upload            # Dropzone / 파일 업로드
  ├── scheduler         # 스케줄러 / 유틸
  └── security          # Spring Security 설정
 ```
