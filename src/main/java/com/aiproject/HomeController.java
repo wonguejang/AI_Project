@@ -65,4 +65,5 @@ public class HomeController {
         return "redirect:/main";
     }
 	
+    //이게 윈도우 환경
 }
