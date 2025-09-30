@@ -33,7 +33,7 @@ public class ProductController {
 		return "main";
 	}
 	
-	//이거 내가했나...? 기억이안나네
+	//이거 내가했나...? 기억이안나네 --> 형님 하신거에 제가 조회수 내용을 추가를했죠
 	@GetMapping("/product/{idx}")
 	public String productDetail(@PathVariable("idx") Integer idx, Model model, Principal principal, HttpSession session) {
 		//상품 정보 가져오기(idx => 상품 번호)

@@ -44,8 +44,10 @@ public class CartController {
 	        }
 	        String userId = auth.getName();
 	        int productIdx = request.get("productId");
+	        
 	        cSvc.addCart(userId, productIdx);  // 서비스에서 장바구니에 추가
 	        response.put("success", true);
+	        
 	    } catch (Exception e) {
 	        if(e instanceof AuthenticationException) {
 	            response.put("success", false);
