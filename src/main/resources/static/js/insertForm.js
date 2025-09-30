@@ -7,36 +7,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 가벼운 설명 -> AI 컨설팅
-	const lightInput = document.querySelector('.light-product');
-	const consultingInput = document.querySelector('.ai-consulting');
-	const loadingContainer = document.getElementById('loading-container');
-	const description2 = document.querySelector('.description-2');
+    const lightInput = document.querySelector('.light-product');
+    const consultingInput = document.querySelector('.ai-consulting');
+    const loadingContainer = document.getElementById('loading-container');
+    const description2 = document.querySelector('.description-2');
 
-	lightInput.addEventListener('keypress', (e) => {
-	    if (e.key === 'Enter') {
-	        e.preventDefault();
+    lightInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
 
-	        // textarea 숨기고 로딩창 보여주기
-	        description2.style.display = 'none';
-	        loadingContainer.style.display = 'flex';
+            // textarea 숨기고 로딩창 보여주기
+            description2.style.display = 'none';
+            loadingContainer.style.display = 'flex';
 
-	        fetch('/aiConsulting', {
-	            method: 'POST',
-	            headers: { 'Content-Type': 'application/json' },
-	            body: JSON.stringify({ inputText: lightInput.value })
-	        })
-	        .then(res => res.text())
-	        .then(result => {
-	            consultingInput.value = result; // 결과 표시
-	        })
-	        .catch(err => console.error('처리 실패:', err))
-	        .finally(() => {
-	            // 로딩창 숨기고 textarea 다시 보여주기
-	            loadingContainer.style.display = 'none';
-	            description2.style.display = 'flex';
-	        });
-	    }
-	});
+            fetch('/aiConsulting', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ inputText: lightInput.value })
+            })
+            .then(res => res.text())
+            .then(result => {
+                consultingInput.value = result; // 결과 표시
+            })
+            .catch(err => console.error('처리 실패:', err))
+            .finally(() => {
+                // 로딩창 숨기고 textarea 다시 보여주기
+                loadingContainer.style.display = 'none';
+                description2.style.display = 'flex';
+            });
+        }
+    });
 
     // 폼 submit 전 hidden 값 채우기 + 필수 체크
     const form = document.querySelector('.product-info-group');
@@ -45,12 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const aiTags = document.querySelector('.ai-tags');
         const price = document.querySelector('.price');
         const aiConsultingHidden = document.getElementById('aiConsulting');
-        const aiConsultingVal = document.querySelector('.description-2 input').value;
-		const imageUrl = document.getElementById('imageUrl');
-		
+        const aiConsultingVal = document.querySelector('.ai-consulting').value; // textarea에서 값 가져오기
+        const imageUrl = document.getElementById('imageUrl');
+        
         // hidden 값 채우기
         aiConsultingHidden.value = aiConsultingVal;
-		imageUrl.value = window.uploadUrl;
+        imageUrl.value = window.uploadUrl;
 
         // 필수 입력 체크
         if (!productName.value.trim()) {
@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.light-product').focus();
             return;
         }
-		if (!window.uploadUrl || !window.uploadUrl.trim()) {
-		    e.preventDefault();
-		    alert('이미지 업로드가 필요합니다.');
-		    return;
-		}
+        if (!window.uploadUrl || !window.uploadUrl.trim()) {
+            e.preventDefault();
+            alert('이미지 업로드가 필요합니다.');
+            return;
+        }
     });
-})
+});

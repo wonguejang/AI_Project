@@ -51,15 +51,16 @@ public class ProductService {
         product.setPrice(Integer.parseInt(price.replaceAll(",", "")));
         pRepo.save(product);
         
-        Path tempPath = Paths.get("c:/temp/" + imageUrl.replace("/images/",""));
-	    Path uploadPath = Paths.get("c:/upload/" + imageUrl.replace("/images/",""));  // 최종 경로
-
-	    try {
-	        Files.createDirectories(uploadPath.getParent()); // 폴더 없으면 생성
-	        Files.move(tempPath, uploadPath, StandardCopyOption.REPLACE_EXISTING);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+        //나중에 살리셈
+//      Path tempPath = Paths.get("c:/temp/" + imageUrl.replace("/images/",""));
+//	    Path uploadPath = Paths.get("c:/upload/" + imageUrl.replace("/images/",""));  // 최종 경로
+//
+//	    try {
+//	        Files.createDirectories(uploadPath.getParent()); // 폴더 없으면 생성
+//	        Files.move(tempPath, uploadPath, StandardCopyOption.REPLACE_EXISTING);
+//	    } catch (IOException e) {
+//	        e.printStackTrace();
+//	    }
 	}
 	
 	@Transactional

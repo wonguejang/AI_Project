@@ -19,7 +19,7 @@ import com.aiproject.ai.Hugging_apiService;
 @Controller
 public class DropzoneController {
 
-	private final String TEMP_UPLOAD_DIR = "c:/temp";
+	private static final String TEMP_UPLOAD_DIR = "/home/ubuntu/upload/";
     
     @Autowired
     Hugging_apiService haSvc;
@@ -33,6 +33,7 @@ public class DropzoneController {
         if (!dir.exists()) dir.mkdirs();
 
         String fileName = file.getOriginalFilename();
+        System.out.println("fileName : " + fileName);
         
         // 외부 url로 이미지 업로드시 -> download.png 처럼 저장됨 (덮혀쓰기)라서 유니크하게 저장하기 위해서 timeStamp 이용해서 저장
         // 저장된 사진 바로 사용할것, 근데 만약 저장하는 이미지 이름이 바지1 이런식으로 저장하는데 기존에 있는 이름이면 덮혀씌워짐 예외처리하고싶으면 서비스 불러서 따로 처리해야함 (굳이 구현안했음)
@@ -58,10 +59,20 @@ public class DropzoneController {
     @PostMapping("/aiTag")
     @ResponseBody
     public String aiTag(@RequestBody Map<String, String> data) throws Exception {
-        String fileUrl = data.get("fileUrl"); // "/images/파일이름.png"
-        // 저장된 경로 다시 c:/upload/이미지.jpg로 바꿔서 서비스 호출
-        String filePath = "c:/temp/" + fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-        return haSvc.TagLabel(filePath); // 실제 파일 경로 전달
+        String fileUrl = data.get("fileUrl"); // "/images/바지.jpg" 또는 "/upload/바지.jpg"
+        if(fileUrl == null || !fileUrl.contains("/")) {
+        	throw new IllegalAccessException("잘못된 URL : " + fileUrl);
+        }
+        
+        // 파일명만 추출 (경로 prefix는 다 버림)
+        String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);  
+        
+        // 리눅스 서버 절대경로 생성
+        String filePath = "/home/ubuntu/upload/" + fileName;
+        System.out.println(">>> fileUrl from client = " + fileUrl);
+        System.out.println(">>> final filePath     = " + filePath);
+
+        return haSvc.TagLabel(filePath); 
     }
     
     //원규 : 간단한 상품설명을 입력하면 ai_api를 호출해 내용을 꾸며줌 
