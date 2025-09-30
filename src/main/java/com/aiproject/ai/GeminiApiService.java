@@ -32,7 +32,7 @@ public class GeminiApiService {
     public String refine(String input) throws Exception {
         String url = endpoint + "?key=" + apiKey;
 
-        ArrayNode sysParts = om.createArrayNode().add(om.createObjectNode().put("text", "항상 한국어로만 답변하세요. 2~3문장 이내 마케팅 문구 톤은 유지"));
+        ArrayNode sysParts = om.createArrayNode().add(om.createObjectNode().put("text", "항상 한국어로만 답변하세요. 2~3문장 이내 마케팅 문구 톤은 유지, 반드시 의류(패션) 상품에 적합한 설명으로만 작성하세요."));
         ObjectNode systemInstruction = om.createObjectNode().set("parts", sysParts);
 
         ArrayNode userParts = om.createArrayNode().add(om.createObjectNode().put("text", input));

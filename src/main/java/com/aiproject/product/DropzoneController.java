@@ -54,13 +54,6 @@ public class DropzoneController {
         return "/images/" + fileName; // 외부 업로드용 URL
     }
     
-    // 드롭존에 url형식으로 들어왓을때의 경로 (http)
-    @PostMapping("/uploadByUrl")
-    @ResponseBody
-    public String handleUrlUpload(@RequestParam("fileUrl") String fileUrl) {
-        return fileUrl; // URL 그대로 DB 저장x
-    }
-    
     //원규 : 사진을 업로드 하면 자동으로 태깅된 값이 들어옴
     @PostMapping("/aiTag")
     @ResponseBody
@@ -79,4 +72,13 @@ public class DropzoneController {
         String consultingResult = gaSvc.refine(inputText);
         return consultingResult;
     }
+
+    // 현재는 사용하지 않음 확장 가능성을 위해 대기
+    // 드롭존에 url형식으로 들어왓을때의 경로 (http)	
+    @PostMapping("/uploadByUrl")
+    @ResponseBody
+    public String handleUrlUpload(@RequestParam("fileUrl") String fileUrl) {
+    	return fileUrl; // URL 그대로 DB 저장x
+    }
+    
 }
