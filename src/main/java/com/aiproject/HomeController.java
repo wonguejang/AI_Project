@@ -64,5 +64,7 @@ public class HomeController {
         }
         return "redirect:/main";
     }
+    
+    //여기서 수정이 좀 있어야할거 같은데
 	
 }
