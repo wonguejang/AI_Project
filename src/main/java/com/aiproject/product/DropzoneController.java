@@ -34,6 +34,7 @@ public class DropzoneController {
 
         String fileName = file.getOriginalFilename();
         
+        
         // 외부 url로 이미지 업로드시 -> download.png 처럼 저장됨 (덮혀쓰기)라서 유니크하게 저장하기 위해서 timeStamp 이용해서 저장
         // 저장된 사진 바로 사용할것, 근데 만약 저장하는 이미지 이름이 바지1 이런식으로 저장하는데 기존에 있는 이름이면 덮혀씌워짐 예외처리하고싶으면 서비스 불러서 따로 처리해야함 (굳이 구현안했음)
         if (fileName.equals("download.png") || fileName.equals("download.jpg")) {
@@ -59,8 +60,11 @@ public class DropzoneController {
     @ResponseBody
     public String aiTag(@RequestBody Map<String, String> data) throws Exception {
         String fileUrl = data.get("fileUrl"); // "/images/파일이름.png"
+        System.out.println(">>> fileUrl from client = " + fileUrl);
+
         // 저장된 경로 다시 c:/upload/이미지.jpg로 바꿔서 서비스 호출
         String filePath = "c:/temp/" + fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+        System.out.println(">>> final filePath     = " + filePath);
         return haSvc.TagLabel(filePath); // 실제 파일 경로 전달
     }
     
