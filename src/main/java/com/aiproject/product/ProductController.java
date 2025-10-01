@@ -25,7 +25,7 @@ public class ProductController {
 	@Autowired
 	private ReplyService rSvc;
 	
-	@GetMapping("main")
+	@GetMapping("/main")
 	public String main(Model model) {
 		List<ProductDto> products = pSvc.findAllProduct();
 		model.addAttribute("products", products);

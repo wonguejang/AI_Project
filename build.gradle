@@ -1,8 +1,8 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.5.5'
-	id 'io.spring.dependency-management' version '1.1.7'
-	id 'war'
+    id 'java'
+    id 'org.springframework.boot' version '3.5.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'war'
 }
 
 group = 'com.aiproject'
@@ -10,63 +10,50 @@ version = '0.0.1-SNAPSHOT'
 description = 'Demo project for Spring Boot'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }
 
 repositories {
-	mavenCentral()
-}
-
-bootWar {
-    enabled = true
-    archiveFileName = "ai.war"
-}
-
-war {
-    enabled = false
+    mavenCentral()
 }
 
 dependencies {
-    // ✅ 외부 톰캣(WAR 배포)에서는 providedRuntime 으로 둡니다
-    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    // ✅ 설치형 톰캣에 배포할 경우
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
-
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework:spring-webflux'
+
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.17.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.17.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
 
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework:spring-webflux'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+bootWar {
+    archiveFileName = "ai.war"
+}
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
