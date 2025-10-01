@@ -91,14 +91,24 @@ src/main/java/com/aiproject
  ├── scheduler         # 스케줄러 / 유틸
  └── security          # Spring Security 설정
 ```
-
 ---
 
+## 🌍 배포 주소 (Demo URL)
+- **서비스 URL**: [https://swsggwp.co.kr](https://swsggwp.co.kr)  
+- 테스트 계정
+- (일반계정)
+  - ID: `test@test.com`  
+  - PW: `1234`
+
+- (ADMIN)
+  - ID: `admin@admin.com`  
+  - PW: `1234`  
+---
+
+
 ## 📖 API 명세
-API 명세는 노션에 정리했습니다.(권한 설정 예정)  
+API 명세는 노션에 정리했습니다.
 👉 [API 명세 보러가기](https://www.notion.so/AI-API-27de75a00e2f808b9f63cbe06cf1756f)
-
-
 
 ---
 
