@@ -94,7 +94,7 @@ src/main/java/com/aiproject
 ---
 
 ## 🌍 배포 주소 (Demo URL)
-- **서비스 URL**: [https://swsggwp.co.kr](https://swsggwp.co.kr)  
+- **서비스 URL**: [Shop](https://swsggwp.co.kr)  
 - 테스트 계정
 - (일반계정)
   - ID: `test@test.com`  
